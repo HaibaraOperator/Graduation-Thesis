@@ -1,0 +1,61 @@
+\contentsline {section}{\fontsize {16pt}{\baselineskip }\selectfont \CJKfamily {zhhei}摘要}{2}
+\contentsline {section}{\fontsize {16pt}{\baselineskip }\selectfont \bf Abstract}{4}
+\contentsline {section}{\numberline {1}概述}{1}
+\contentsline {subsection}{\numberline {1.1}物理系统中的守恒量与对称性}{1}
+\contentsline {subsubsection}{\numberline {1.1.1}破缺与守恒}{1}
+\contentsline {subsubsection}{\numberline {1.1.2}对称性}{1}
+\contentsline {subsubsection}{\numberline {1.1.3}对称性的破缺及其意义}{2}
+\contentsline {subsection}{\numberline {1.2}CP 破坏}{2}
+\contentsline {subsubsection}{\numberline {1.2.1}\textbf {P} -- 空间反射对称性}{2}
+\contentsline {subsubsection}{\numberline {1.2.2}$\tau -\theta $ 疑难}{3}
+\contentsline {subsubsection}{\numberline {1.2.3}空间反射变换}{3}
+\contentsline {subsubsection}{\numberline {1.2.4}C -- 电荷共轭对称性}{4}
+\contentsline {subsubsection}{\numberline {1.2.5}电荷共轭变换}{4}
+\contentsline {subsubsection}{\numberline {1.2.6}T --时间反演对称性}{5}
+\contentsline {subsubsection}{\numberline {1.2.7}时间反演变换}{5}
+\contentsline {subsubsection}{\numberline {1.2.8}CP 乘积变换与 CPT 定理}{6}
+\contentsline {subsection}{\numberline {1.3}CP 破坏机制}{7}
+\contentsline {subsubsection}{\numberline {1.3.1}CKM 矩阵的参数化}{9}
+\contentsline {subsection}{\numberline {1.4}CP 破坏的观测现象}{9}
+\contentsline {subsubsection}{\numberline {1.4.1}$K^{0}-\mathaccentV {bar}016{K}^{0}$混合}{10}
+\contentsline {subsection}{\numberline {1.5}CP 破坏的意义}{11}
+\contentsline {subsection}{\numberline {1.6}强相互作用中的 CP 破坏}{12}
+\contentsline {subsubsection}{\numberline {1.6.1}强 CP 破坏的解决办法}{12}
+\contentsline {subsection}{\numberline {1.7}论文架构}{13}
+\contentsline {subsubsection}{\numberline {1.7.1}有效场论}{13}
+\contentsline {subsubsection}{\numberline {1.7.2}Vafa-Witten 定理}{13}
+\contentsline {subsubsection}{\numberline {1.7.3}Nambu-Jona-Lasinio 模型 (NJL 模型)}{13}
+\contentsline {subsubsection}{\numberline {1.7.4}手性微扰理论}{14}
+\contentsline {subsubsection}{\numberline {1.7.5}结论}{14}
+\contentsline {section}{\numberline {2}有效场论概述}{14}
+\contentsline {subsection}{\numberline {2.1}什么是有效?}{15}
+\contentsline {subsection}{\numberline {2.2}剔除自由度}{17}
+\contentsline {subsection}{\numberline {2.3}对称性}{17}
+\contentsline {subsection}{\numberline {2.4}数幂规则}{22}
+\contentsline {subsection}{\numberline {2.5}小结}{24}
+\contentsline {subsection}{\numberline {2.6}手性对称破缺与自发 CP 破坏}{25}
+\contentsline {subsubsection}{\numberline {2.6.1}悖论}{26}
+\contentsline {subsection}{\numberline {2.7}$\textrm {SU}(3)\otimes \textrm {SU}(3)$ 与 CP 破坏}{27}
+\contentsline {subsubsection}{\numberline {2.7.1}假设与约定}{27}
+\contentsline {subsubsection}{\numberline {2.7.2}$(\textbf {3},\mathaccentV {bar}016{\textbf {3}})\oplus (\mathaccentV {bar}016{\textbf {3}},\textbf {3})$ 对称破缺}{28}
+\contentsline {subsubsection}{\numberline {2.7.3}自发 CP 破坏}{30}
+\contentsline {subsubsection}{\numberline {2.7.4}Mathur 与 Okubo 之域}{31}
+\contentsline {section}{\numberline {3}Vafa-Witten 定理}{32}
+\contentsline {section}{\numberline {4}Nambu Jona-Lasinio 模型}{35}
+\contentsline {subsection}{\numberline {4.1}BCS 超导理论}{35}
+\contentsline {subsubsection}{\numberline {4.1.1}Dirac 的电子空穴理论}{35}
+\contentsline {subsubsection}{\numberline {4.1.2}BCS 到 NJL 之路}{36}
+\contentsline {subsubsection}{\numberline {4.1.3}一些不平凡的问题}{36}
+\contentsline {subsection}{\numberline {4.2}模型的简单机制}{37}
+\contentsline {subsection}{\numberline {4.3}实际的 NJL 模型}{38}
+\contentsline {subsection}{\numberline {4.4}强相互作用下的 NJL 模型}{39}
+\contentsline {subsubsection}{\numberline {4.4.1}非规范理论}{40}
+\contentsline {subsection}{\numberline {4.5}NJL 模型中基态的计算}{41}
+\contentsline {subsubsection}{\numberline {4.5.1}$\theta $ 与真空的相关性}{43}
+\contentsline {section}{\numberline {5}手性微扰理论}{46}
+\contentsline {subsection}{\numberline {5.1}手性微扰理论概述}{46}
+\contentsline {subsection}{\numberline {5.2}$\theta =\pi $ 时的相结构}{46}
+\contentsline {subsection}{\numberline {5.3}有限温度情形}{48}
+\contentsline {section}{\numberline {6}结论}{50}
+\contentsline {section}{\fontsize {16pt}{\baselineskip }\selectfont \CJKfamily {zhhei}参考文献}{53}
+\contentsfinish 

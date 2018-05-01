@@ -1,0 +1,1207 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{times}
+\usepackage{mathptmx}
+\usepackage{bm} % 希腊字母粗体
+\usepackage{ctex} % 中文编辑
+\usepackage{empheq} % 公式加框
+\usepackage{epsfig} % 插图
+\usepackage{indentfirst} % 开头不顶格
+\usepackage{slashed}
+%\usepackage{txfonts} % 可以用回路积分和面积分符号
+\usepackage{CJK,CJKfntef}
+
+\usepackage{geometry}%设置页边距
+\geometry{bottom=25mm, left=25mm, right=25mm}%top=25mm,
+%\setlength{\textwidth}{160mm}
+%\setlength{\textheight}{247mm}
+
+\usepackage{fancyhdr}%设置页眉页码
+\usepackage{titlesec}%设置章节名称
+\usepackage{titletoc}
+%附录
+\usepackage[toc,page,title,titletoc,header]{appendix}
+%插入PDF
+\usepackage{pdfpages}
+
+%简写
+\newcommand{\ep}{\epsilon}
+\newcommand{\la}{\langle}
+\newcommand{\n}{\nonumber}
+\newcommand{\p}{\partial}
+\newcommand{\ra}{\rangle}
+\newcommand{\rad}{\ra_{\cal D}}
+\newcommand{\dv}{\Delta\varphi}
+\newcommand{\kb}{k_{\rm B}}
+\newcommand{\ve}{\varepsilon}
+\newcommand{\vp}{\varphi}
+\newcommand{\ccc}{c_{\textrm{crit}}}
+\newcommand{\CP}{\textbf{CP}}
+\newcommand{\cp}{\textit{CP}}
+
+%%设置常用中文字号, 方便调用
+%\renewcommand{\baselinestretch}{1.5}%设置行距
+\newcommand{\erhao}{\fontsize{22pt}{40pt}\selectfont}
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}
+\newcommand{\sanhao}{\fontsize{16pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosanhao}{\fontsize{15pt}{\baselineskip}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}
+\newcommand{\liuhao}{\fontsize{7.5pt}{\baselineskip}\selectfont}
+%设置文档正文字体为宋体
+\renewcommand{\contentsname}{目\quad 录}
+\renewcommand{\listfigurename}{插图目录}
+\renewcommand{\listtablename}{表格目录}
+\renewcommand{\refname}{参考文献}
+\renewcommand{\abstractname}{摘要}
+\renewcommand{\indexname}{索引}
+\renewcommand{\tablename}{表}
+\renewcommand{\figurename}{图}
+\renewcommand{\appendices}{附\quad 录}
+%设置章节名称
+\titleformat{\section}{\centering\erhao\heiti}{第\,\thesection\,章}{1em}{}
+%\titleformat{\section*}{\centering\erhao\heiti}{1}{1em}{}
+\titleformat{\subsection}{\sanhao\heiti}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\sihao\heiti}{\thesubsubsection}{1em}{}
+\titlespacing{\section}{0pt}{10pt}{12pt}
+\titlespacing{\subsection}{0pt}{*0.1}{*0.5}
+\titlespacing{\subsubsection}{0pt}{*0.1}{*0.5}
+%目录样式
+%\titlecontents{section}[0em]{}{\sanhao\heiti第\quad 章\quad\contentslabel{2.75em}}{\hspace*{0em}}{\titlerule*[1pc]{$\cdot$}\contentspage}
+%\titlecontents{subsection}[1.8em]{}{\sihao\songti\contentslabel{1.5em}}{\hspace*{0em}}{\titlerule*[1pc]{$\cdot$}\contentspage}
+%\titlecontents{subsubsection}[3em]{}{\xiaosihao\songti\contentslabel{2em}}{\hspace*{0em}}{\titlerule*[1pc]{$\cdot$}\contentspage}
+\titlecontents{section}[0em]{}{\sanhao\heiti第 \thecontentslabel\ 章\quad}{\hspace*{0em}}{\titlerule*[0.3pc]{$\cdot$}\contentspage}
+\titlecontents{subsection}[1.8em]{}{\sihao\songti\contentslabel{1.5em}}{\hspace*{0em}}{\titlerule*[0.3pc]{$\cdot$}\contentspage}
+\titlecontents{subsubsection}[4em]{}{\xiaosihao\songti\contentslabel{2.5em}}{\hspace*{0em}}{\titlerule*[0.3pc]{$\cdot$}\contentspage}
+%设置上表参考文献\upcite
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
+%去掉参考文献序号的中括号加点号
+\makeatletter
+\def\@biblabel#1{#1.}
+\makeatother
+%设置公式图标表格编号类型
+\makeatletter
+\@addtoreset{equation}{section}%每章重置编号
+\makeatother
+\renewcommand{\theequation}{\arabic{section}\,-\,\arabic{equation}}
+\renewcommand{\thefigure}{\arabic{section}. \arabic{figure}}
+\renewcommand{\thetable}{\arabic{section}-\arabic{table}}
+%%设置行间距
+%\renewcommand{\baselinestretch}{1.5}
+\usepackage{setspace}
+\renewcommand{\singlespacing}{\setstretch{1.09}} % 对应Word 中单倍行距
+\renewcommand{\onehalfspacing}{\setstretch{1.6}} % 对应Word 中1.5 倍行距
+%\renewcommand{\captionfont}{\linespread{1}\normalsize}
+\begin{document}\CJKspace
+%\onehalfspacing
+\setlength{\baselineskip}{1.2\baselineskip}
+%中文扉页
+%\title{}\maketitle\thispagestyle{empty}%首页无页眉页码
+\begin{titlepage}
+\begin{center}
+% Upper part of the page
+%\includegraphics[width=0.15\textwidth]{./logo}\\[1cm]
+%\textsc{\LARGE University of Beer}\\[1.5cm]
+%\textsc{\Large Final year project}\\[0.5cm]
+\textsc{}\\[4cm]
+% Title
+%\HRule \\[0.4cm]
+\textrm{\erhao \heiti 强相互作用中的 \textbf{CP} 破坏}\\[7.5cm]
+%\HRule \\[1.5cm]
+
+% Author and supervisor
+\begin{minipage}{\textwidth}
+\begin{center}
+\begin{tabular}{cl}
+\textsc{\sihao 作者姓名：}&\textsc{\sihao 王郅臻}\\
+\textsc{\sihao 指导教师：}&\textsc{\sihao 李楠\ 副教授}\\
+\textsc{\sihao 单位名称：}&\textsc{\sihao 理学院}\\
+\textsc{\sihao 专业名称：}&\textsc{\sihao 应用物理学}
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\vfill
+
+% Bottom of the page
+{东北大学}\\
+{\large 2018 年 6 月}
+\end{center}
+\end{titlepage}
+
+\newpage
+{\pagestyle{empty}\mbox{}\newpage\pagestyle{empty}}
+
+%英文扉页
+\begin{titlepage}
+\begin{center}
+\textsc{}\\[4cm]
+\textrm{\erhao CP Violation in Strong Interaction}\\[7.5cm]
+{\sihao by Zhi-Zhen WANG}
+
+\vfill
+{\sihao Supervisor\quad Nan Li}\\
+\vspace{12pt}
+{\sihao Northeastern University}\\
+\vspace{12pt}
+{\sihao June 2018}
+\vfill
+
+\end{center}
+\end{titlepage}
+
+
+\newpage
+{\pagestyle{empty}\mbox{}\newpage\pagestyle{empty}}
+
+%摘要
+\newpage
+\rhead{\wuhao\kaishu 摘\quad要}
+\section*{强相互作用中的 \textbf{CP} 破坏\\摘\quad\quad\ 要}
+\addcontentsline{toc}{section}{\sanhao\heiti摘要}%添加到目录
+ 我们知道粒子物理中的基本粒子以及强力弱力与电磁相互作用力可以用标准模型给出统一的表达, 但以我们先进的实验现象 (比如中微子振荡实验) 来看标准模型离真实世界的描述仍有一定距离, \textbf{CP} 破坏问题正是其中之一. 尤其是强相互作用中的 \textbf{CP} 破坏, 尽管标准模型中的量子色动力学能够给出强 \textbf{CP} 破坏存在的预言, 但事实是实验上强 \textbf{CP} 破坏程度极其微弱 ($<10^{-10}$), 至今没有任何迹象表明强 \textbf{CP} 破坏是存在的. 这意味着我们必须在标准模型的基础上对现有理论进行改进以探明是否存在强 CP 破坏.
+\par
+本文的工作将从有效场论出发, 依据剔除自由度保持对称性等构建方式给出 Nambu-Jona-Lasinio 模型并利用其有效拉氏量对强相互作用中的 $\CP$ 破坏现象进行研究. 我们将有效拉氏量中会引起手性反常的项与其他项分离, 仅由一个参数 $c$ 相联系. 从而导出了与 $\CP$ 破缺相位 $\theta$ 以及参数 $c$ 相关的热力学有效势, 对有效势求极值后便可以得到各个手性凝聚态与 $\theta$ 及 $c$ 的关系. 从这些关系中我们看出自发的强 $\CP$ 破坏是确实存在的, 它会在 $\theta=\pi$ 时产生且会给出可预测的现象 -- $\eta$ 介子的产生. 这与 Dashen 在 70 年代提出的预言是一致的. 同时我们还对手性微扰理论给出的夸克质量限制以及相结构的结果进行了对比, 所得关系基本一致. 进一步说明了理论的正确性以及基于有效场论的各类模型的自洽性. 最后我们指出了有限温度时 $\CP$ 破缺相的行为, 说明了 224 MeV 以上时我们几乎看不到强 $\CP$ 破坏现象.
+
+%\showthe\baselineskip
+\vskip 18pt
+\noindent
+{\bf 关键词}: 有效场论, 强 CP 破坏, NJL 模型
+\indent
+
+\newpage
+{\pagestyle{empty}\mbox{}\newpage\pagestyle{empty}}
+
+%Abstract
+\newpage
+\rhead{\wuhao Abstract}
+\section*{\bf CP Violation in Strong Interaction}
+\addcontentsline{toc}{section}{\sanhao\bf Abstract}% 添加到目录
+ Although the standard model (SM) provides a uniform representation for elementary particles and three fundamental interactions except gravity, some experiments (such as neutrino oscillation) still alarm us that the standard model has gaps between the theory itself and our nature, while $\CP$ violation is just one of the gaps. As an open and profound problem, strong $\CP$ violation plays an important role. The quantum chromodynamics of standard model predicts that strong $\CP$ violation would appear while the fact is that this violation is too weak to be observed ($<10^{-10}$), which means that one has to improve our old model with SM taken as a cornerstone so that one could explore whether the strong $\CP$ violation exists or not.
+\par
+In this thesis, we would introduce the effective field theory first with some constructive method (such as eliminating the degree of freedom, holding the same symmetries) obtained and then use the effective Lagrangian of Nambu-Jona-Lasinio model, which obtained from effective field theory, to discover the strong $\CP$ violation. We would separate the axial anomaly term of effective Lagrangian with the other terms and these terms can relate to each other only with one parameter $c$. Then we could derive a thermodynamical effective potential depends on $\CP$ violating phase $\theta$ and $c$. These dependences for chiral condensation could be obtained once the extrema of effective potential derived. And from these dependences we find that the spontaneous strong $\CP$ violation indeed exist at $\theta=\pi$ with a predictable phenomenon observed -- the appearance of $\eta$ meson. This is in accordance to the prediction of Dashen's work in 1970s. We would also compare the results for quark mass domain and phase structure of our NJL model to that of chiral perturbation theory and it shows that both two theories conform to each other in certain conditions, which proves that our theory is correct and the theories based on effective field theory are consistent. Last but not least, we point out the nature of $\CP$ violating phase at finite temperature, which informs us that we can hardly observe the strong $\CP$ violation phenomenon when the temperature is higher than 224 MeV.
+
+\vskip 18pt
+\noindent
+{\bf Keywords}: effective field theory, strong CP violation, NJL model
+
+\newpage
+{\pagestyle{empty}\mbox{}\newpage\pagestyle{empty}}
+
+%目录
+\newpage
+\rhead{\wuhao 目\quad录}
+\pagenumbering{arabic}
+\tableofcontents
+
+\newpage
+{\pagestyle{empty}\mbox{}\newpage\pagestyle{empty}}
+%正文
+\newpage
+\pagestyle{fancy}
+\fancyhead{} % 清空前面的页眉
+\renewcommand{\sectionmark}[1]{\markboth{第 \thesection\ 章\quad #1}{}}
+\lhead{\wuhao{\kaishu 东北大学毕业设计（论文）}}
+\rhead{\wuhao{\kaishu \leftmark}}
+\fancyfoot[C]{- \thepage\ -}%页码设置为 -1-
+\pagenumbering{arabic}
+
+\section{概述}
+\subsection{物理系统中的守恒量与对称性}
+\subsubsection{破缺与守恒}
+系统的破缺, 指的是一个给定物理系统中的某个对称性发生了破缺. 在自然界中, 有一部分我们熟知的对称性, 诸如空间旋转对称性、平移对称性等, 都属于严格的对称性, 在我们讨论的一般问题中都是成立的. 而由于某些条件导致对称性不再保持的物理现象, 比如凝聚态物理中在临界点附近发生的相变\upcite{1}, 我们则称之为破缺的对称性. 若一个系统中存在着这样可能会发生破缺的对称性, 那么我们就说这个系统是会发生破缺的. 而单独讨论对称性, 是一种较为抽象的表述, 由诺特定理\upcite{2}, 我们知道, 任何一个系统中的连续对称性都会给出一个对应的守恒荷, 亦即我们在物理中所定义的守恒量, 如能量与广义动量, 它们分别对应系统的时间平移对称性与空间平移或旋转对称性. 故当我们想要研究一个物理系统的对称性破缺时, 我们所需要做的便是了解在这个系统中可能发生破缺的对称性或与之对应的守恒量.
+\subsubsection{对称性}
+我们一般习惯于将对称性分为两类:
+\par
+(1) 时空对称性. 即这样的对称性在一定的时空变换方式下始终保持. 其中又可根据其是否连续分为两类:
+\par
+$\diamond$ 连续空间对称性: 空间转动不变性, 时间与空间的平移不变性.
+\par
+$\diamond$ 分立时空对称性: 空间反射对称性 (\textbf{P} 对称性), 时间反演对称性 (\textbf{T} 对称性).
+\par
+(2)
+内禀对称性. 这样的对称性则来自于物理系统内部的变化. 同样根据是否连续可细分为两类.
+\par
+$\diamond$ 分立对称性: 置换对称性, 电荷共轭对称性 (\textbf{C} 对称性).
+\par
+$\diamond$ 连续对称性: 整体规范对称性, 包括 $\textrm{U}(1)$, $\textrm{SU}(2)$, $\textrm{SU}(3)$ 等. 以及定域规范对称性 $\textrm{SU}(N)$ 等. 今天我们已经知道, 量子电动力学 (QED) 满足 $\textrm{U}(1)$ 定域规范对称性, 这一对称性保持了光子的质量项为零\upcite{3}. 而量子色动力学 (QCD) 中则具有 $\textrm{SU}(3)$ 非 Abel 定域规范对称性, 保证了胶子质量项为零\upcite{4}.
+\subsubsection{对称性的破缺及其意义}
+自然界中许多对称性都是严格的, 由之前的阐述我们已经知道, 角动量守恒对应的空间旋转对称性, 能量守恒对应的时间平移对称性, 电荷守恒对应的 $\textrm{U}(1)$ 整体规范对称性等都是严格的. 直到今天实验上都并未出现任何破坏的迹象. 这些对称性的保持在我们处理具体问题时提供了许多便利, 也让我们能够提出一些可靠的假设比如宇宙在大尺度结构上是均匀且各向同性的\upcite{5}. 但某种意义上来说, 可能产生破缺的对称性往往会提供给我们更有价值的信息. 在某种条件下对称性不再保持, 这时则会产生一些更奇妙的现象并暗示着我们, 旧的理论与认知很有可能还有某些不正确的地方, 在指导性上, 不严格保持的这些对称性对于帮助我们理解这个世界起的作用是更大的. 而本文将讨论的 \textbf{CP} 破坏正是现代物理学, 尤其是粒子物理学中最具吸引力也是最令人困扰的对称性破缺之一. 我们现在具体阐述什么叫做 \textbf{CP} 破坏.
+\subsection{CP 破坏}
+如前所述, \textbf{C}、\textbf{P}、\textbf{T} 三种对称性均为分立对称性, 我们将在这一部分详细阐述各类分立变换的性质.
+\subsubsection{\textbf{P} -- 空间反射对称性}
+空间反射 \textbf{P} 变换亦称为宇称变换或镜像变换, \textbf{P} 即宇称英文 parity 的首字母缩写. 宇称变换, 通俗的来说, 即左右位矢的变换. 对于一个可能的粒子波函数 $\psi(t,\textbf{x})$, 在经过宇称变换后, 粒子波函数形式将变为 $\psi(t,-\textbf{x})$. 即 $\textbf{x}\rightarrow-\textbf{x}$ 的变换. 日常生活中人的左右手或是许多动物的肢体都是左右对称的. 尽管如果从细微之处观察, 会存在一些由于生活环境引起的微弱的不对称. 鉴于此, 粒子物理学家们在上世纪五十年代之前普遍倾向于认为在粒子世界中, 宇称是一个很好的对称性, 即宇称是守恒的. 在建立起早期描述各类基本相互作用的理论比如量子场论的过程中, 宇称守恒一直被当作与电荷守恒, 能量守恒等同一级别的严格的守恒量以及粒子反应的基本判据. 著名量子力学奠基人 Niels Bohr 甚至称:``我不相信上帝会是个左撇子''以表示他对宇称守恒的坚定支持. 直到 1956 年, 物理学家们发现, 在弱相互作用中, 宇称同样是有可能发生破缺的, 并从此进一步发展了后来描述基本粒子及其相互作用的基本模型 -- 标准模型\upcite{6}. 弱相互作用中宇称不守恒的理论最早由李政道与杨振宁提出, 并由吴健雄等实验物理学家于 1957 年正式验证\upcite{7}\upcite{8}. 李杨二人也因此共享了 1957 年的诺贝尔物理学奖.
+\subsubsection{$\tau-\theta$ 疑难}
+1947 年, 物理学家们在宇宙线实验中发现, $\theta^{+}$ 与 $\tau^{+}$ 两个粒子的的质量相同, 但却会衰变到两个宇称不同的末态\upcite{9}:
+\begin{align}
+\theta^{+}\rightarrow\pi^{+}\pi^{0}, \n\\
+\tau^{+}\rightarrow\pi^{+}\pi^{-}\pi^{+}. \n
+\end{align}
+前者的宇称是正的而后者宇称则为负. $\theta^{+}$ 与 $\tau^{+}$ 具有相同的内部结构与质量, 从一般的认知来说, 它们应当是同一种粒子. 但若为同种粒子, 则宇称在这个弱相互作用主导的反应中将不复守恒. 实际上, 在当时也并未有任何可靠的实验证实在弱相互作用中宇称守恒. 李杨二人正是在这样的背景下大胆地猜想弱相互作用中宇称不守恒并提出了相应的理论. 尽管被学界所怀疑, 在吴健雄等人利用超低温下计划的 $^{60}\textrm{Co}$ 原子核的 $\beta$ 衰变实验的证实下, 物理学家们最终认识到, 在粒子世界中, 我们所熟悉的空间反射对称性是会破缺的. 宇称不守恒的发现极大地增进了人们对于弱相互作用的认识, 并引导物理学家们在此基础上提出了正确的弱相互作用理论\upcite{10}.
+\subsubsection{空间反射变换}
+空间反射变换是一个幺正变换, 即 $P^{\dagger}=P^{-1}$, 且 $[P,H]=0$, 这样保证了波函数满足的基本方程 -- Schr\"{o}dinger 方程在空间反射下不变. 同时, 对易关系 $[x_{i},p_{j}]=i\hbar\delta_{ij}$ 显然也应当在空间反射变换下保持不变. Hilbert 空间中的 $P$ 算符于是有性质
+\begin{align}
+P\textbf{x}P^{-1}=-\textbf{x}, \n\\
+P\textbf{p}P^{-1}=-\textbf{p}. \n
+\end{align}
+在量子场论中, 假定在空间反射下粒子场按如下的方式变换:
+\par
+标量场,    $\phi(\textbf{x},t)\rightarrow P\phi(\textbf{x},t)P^{-1}=\phi(-\textbf{x},t)$;
+\par
+赝标量场,    $\varphi(\textbf{x},t)\rightarrow P\varphi(\textbf{x},t)P^{-1}=-\varphi(-\textbf{x},t)$;
+\par
+旋量场,    $\psi(\textbf{x},t)\rightarrow P\psi(\textbf{x},t)P^{-1}=\gamma^{0}\psi(-\textbf{x},t)$;
+\par
+矢量场,    $V_{\mu}(\textbf{x},t)\rightarrow PV_{\mu}(\textbf{x},t)P^{-1}=V^{\mu}(-\textbf{x},t)$;
+\par
+轴矢量场,    $A_{\mu}(\textbf{x},t)\rightarrow PA_{\mu}(\textbf{x},t)P^{-1}=-A^{\mu}(-\textbf{x},t)$.
+\\
+$P$ 可用场的产生湮灭算符表示\upcite{11}. 由上述变换我们亦可给出双线型在 $P$ 变换下的性质.
+\par
+坐标,    $(\textbf{x},t)$;
+\par
+标量,    $\bar{\psi}_{1}\psi_{2}\rightarrow\bar{\psi}_{1}\psi_{2}$;
+\par
+赝标量,    $\bar{\psi}_{1}\gamma_{5}\psi_{2}\rightarrow-\bar{\psi}_{1}\gamma_{5}\psi_{2}$;
+\par
+矢量,    $\bar{\psi}_{1}\gamma_{\mu}\psi_{2}\rightarrow\bar{\psi}_{1}\gamma^{\mu}\psi_{2}$;
+\par
+轴矢量,    $\bar{\psi}_{1}\gamma_{\mu}\gamma_{5}\psi_{2}\rightarrow -\bar{\psi}_{1}\gamma^{\mu}\gamma_{5}\psi_{2}$;
+\par
+张量,    $\bar{\psi}_{1}\sigma_{\mu\nu}\psi_{2}\rightarrow\bar{\psi}_{1}\sigma^{\mu\nu}\psi_{2}$.
+\\
+一般而言, 在如上的表示下, 若变换后出现负号, 则认为变换使某种场发生了破缺, 反之亦然. 可以证明, 量子电动力学拉氏量及其作用量在 $P$ 变换下保持不变. 而对于量子色动力学的拉氏量, 则会有一些反常项在 $P$ 变换下破缺. 这一点我们在之后详谈.
+\subsubsection{C -- 电荷共轭对称性}
+电荷共轭变换又称为正反粒子共轭变换. 它是在研究正反粒子反应时衍生的问题, 故属于相对论性量子力学, 即量子场论的范畴. \textbf{C} 即电荷共轭英文 charge conjugate 的首字母缩写. 对于弱衰变 $\pi^{+}\rightarrow e^{+}\nu_{e}$ 与 $\pi^{-}\rightarrow e^{-}\bar{\nu}_{e}$. 这两个反应可以通过电荷共轭变换互相转换. 而显然的, $\textbf{C}$ 变换并不改变自旋, 那么对 $\pi^{+}\rightarrow e^{+}\nu_{e}$ 反应做电荷共轭变换时应当出现左旋的 $\bar{\nu}_{e}$, 而实际上实验观测告诉我们 $\bar{\nu}_{e}$ 仅有右旋态. 故 \textbf{C} 对称性亦在粒子反应中发生破缺.
+\subsubsection{电荷共轭变换}
+在量子场论中, 我们假定场算符对电荷共轭变换满足如下变换关系:
+\par
+标量场, $\phi(x)\rightarrow C\phi(x)C^{-1}=\phi^{\dagger}(x)$;
+\par
+赝标量场, $\varphi(x)\rightarrow C\varphi(x)C^{-1}=\varphi^{\dagger}(x)$;
+\par
+旋量场, $\psi(x)\rightarrow C\psi(x)C^{-1}=i\gamma^{2}\gamma^{0}\bar{\psi}^{T}(x)$;
+\par
+矢量场, $V_{\mu}(x)\rightarrow CV_{\mu}(x)C^{-1}=-V_{\mu}^{\dagger}(x)$;
+\par
+轴矢量场, $A_{\mu}(x)\rightarrow CA_{\mu}(x)C^{-1}=A_{\mu}^{\dagger}(x)$.
+\\
+其中, $x$ 为 4 维时空坐标. 同样的, 可推出双线型在 $C$ 变换下的性质:
+\par
+标量, $\bar{\psi}_{1}\rightarrow\bar{\psi}_{2}\psi_{1}$;
+\par
+赝标量, $\bar{\psi}_{1}\gamma^{5}\psi_{2}\rightarrow\bar{\psi}_{2}\gamma_{5}\psi_{1}$;
+\par
+矢量, $\bar{\psi}_{1}\gamma_{\mu}\psi_{2}\rightarrow-\bar{\psi}_{2}\gamma_{\mu}\psi_{1}$;
+\par
+轴矢量, $\bar{\psi}_{1}\gamma_{\mu}\gamma_{5}\psi_{2}\rightarrow\bar{\psi}_{2}\gamma_{\mu}\gamma_{5}\psi_{1}$;
+\par
+张量, $\bar{\psi}_{1}\sigma_{\mu\nu}\psi_{2}\rightarrow-\bar{\psi}_{2}\sigma_{\mu\nu}\psi_{1}$. \\
+由此可以证明量子电动力学与量子色动力学拉氏量及作用量都是 $C$ 不变的.
+\subsubsection{T --时间反演对称性}
+时间反演变换是将 $t\rightarrow-t$ 的变换, 这时粒子的动量, 角动量与自旋均需改变方向. 由热力学第二定律\upcite{12}, 我们知道对于大量粒子的集合而言, 时间反演的几率是极其微小以至于不可能发生的. 但对于有限个粒子的量子系统, 时间反演是容许的. $\textbf{T}$ 即时间反演英文 time\ reversal 的首字母缩写. 对于任一态矢组合 $|\ \rangle=c_{1}|1\rangle+c_{2}|2\rangle$, $T$ 算符作用后的结果为 $T|\ \rangle=c_{1}^{*}T|1\rangle+c_{2}^{*}T|2\rangle$. 即 $T$ 运算并不是线性运算, 同时也不满足幺正变换的条件. 由于 $T$ 变换的特殊性, 实验上检验 $T$ 不变性并不是构造某个过程中时间反演的量子解, 而是测量某个可观测量在时间反演下的改变\upcite{13}. $T$ 破坏的直接检验来自 Kabir\upcite{14}, 这里不赘述.
+\subsubsection{时间反演变换}
+场算符在 $T$ 变换下的性质满足:
+\par
+标量场, $\phi(\textbf{x},t)\rightarrow T\phi(\textbf{x},t)T^{-1}=\phi(\textbf{x},-t)$;
+\par
+赝标量场, $\varphi\rightarrow T\varphi(\textbf{x},t)T^{-1}=\varphi(\textbf{x},-t)$;
+\par
+旋量场, $\psi(\textbf{x},t)\rightarrow T\psi(\textbf{x},t)T^{-1}=i\gamma^{1}\gamma^{3}\psi(\textbf{x},-t)$;
+\par
+矢量场, $V_{\mu}(\textbf{x},T)\rightarrow TV_{\mu}(\textbf{x},t)T^{-1}=V^{\mu}(\textbf{x},-t)$;
+\par
+轴矢量场, $A_{mu}(\textbf{x},t)\rightarrow TA_{\mu}(\textbf{x},t)T^{-1}=A^{\mu}(\textbf{x},-t)$.
+\par
+双线型的变换性质如下:
+\begin{align}
+(\textbf{x},t)&\rightarrow(\textbf{x},-t); \n\\
+\bar{\psi}_{1}\psi_{2}&\rightarrow\bar{\psi}_{1}\psi_{2}; \n\\
+\bar{\psi}_{1}\gamma_{5}\psi_{2}&\rightarrow-\bar{\psi}_{1}\gamma_{5}\psi_{2}; \n\\
+\bar{\psi}_{1}\gamma_{\mu}\psi_{2}&\rightarrow\bar{\psi}_{1}\gamma^{\mu}\psi_{2}; \n\\
+\bar{\psi}_{1}\gamma_{\mu}\gamma_{5}\psi_{2}&\rightarrow\bar{\psi}_{1}\gamma^{\mu}\gamma_{5}\psi_{2}; \n\\
+\bar{\psi}_{1}\sigma_{\mu\nu}\psi_{2}&\rightarrow\bar{\psi}_{1}\sigma^{\mu\nu}\psi_{2}. \n
+\end{align}
+\subsubsection{CP 乘积变换与 CPT 定理}
+在知道了各个分立变换的性质之后, 我们便可以清楚的叙述联合的 $CP$ 变换了. 乘积变换即连续作 $C$、$P$、$T$ 中任几个变换. 故 $CP$ 变换实际上就是连续进行 $P$ 与 $C$ 变换 (顺序不分先后). 在 $CP$ 变换下,
+\par
+标量场, $\phi(\textbf{x},t)\rightarrow\phi^{\dagger}(-\textbf{x},t)$,
+\par
+赝标量场, $\varphi(\textbf{x},t)\rightarrow-\varphi^{\dagger}(-\textbf{x},t)$,
+\par
+矢量场, $V_{\mu}(\textbf{x},t)\rightarrow-V^{\mu\dagger}(-\textbf{x},t)$,
+\par
+轴矢量场, $A_{\mu}(\textbf{x},t)\rightarrow-A^{\mu\dagger}(-\textbf{x},t)$. \par
+对双线型,
+\begin{align}
+(\textbf{x},t)&\rightarrow(-\textbf{x},t), \n\\
+\bar{\psi}_{1}\psi_{2}&\rightarrow\bar{\psi}_{2}\psi_{1}, \n\\
+\bar{\psi}_{1}\gamma_{5}\psi_{2}&\rightarrow-\bar{\psi}_{2}\gamma_{5}\psi_{1}, \n\\
+\bar{\psi}_{1}\gamma_{\mu}\psi_{2}&\rightarrow-\bar{\psi}_{2}\gamma^{\mu}\psi_{1}, \n\\
+\bar{\psi}_{1}\gamma_{\mu}\gamma_{5}\psi_{2}&\rightarrow-\bar{\psi}_{2}\gamma^{\mu}\gamma_{5}\psi_{1}, \n\\
+\bar{\psi}_{1}\sigma_{\mu\nu}\psi_{2}&\rightarrow-\bar{\psi}_{2}\sigma^{\mu\nu}\psi_{1}. \n
+\end{align}
+在连续乘积变换中, 有一类比较特殊的变换, 即 $CPT$ 变换. 在 $CPT$ 变换下,
+\par
+标量场, $\phi(\textbf{x},t)\rightarrow\phi^{\dagger}(-\textbf{x},-t)$,
+\par
+赝标量场, $\varphi(\textbf{x},t)\rightarrow-\varphi^{\dagger}(-\textbf{x},-t)$,
+\par
+矢量场, $V_{\mu}(\textbf{x},t)\rightarrow-V_{\mu}^{\dagger}(-\textbf{x},-t)$,
+\par
+轴矢量场, $A_{\mu}(\textbf{x},t)\rightarrow-A_{\mu}^{\dagger}(-\textbf{x},-t)$.
+\begin{align}
+(\textbf{x},t)&\rightarrow(-\textbf{x},-t), \n\\
+(c^{-}\ \textrm{number})&\rightarrow(c^{-}\ \textrm{number})^{*}, \n\\
+\bar{\psi}_{1}\psi_{2}&\rightarrow\bar{\psi}_{2}\psi_{1}, \n\\
+\bar{\psi}_{1}\gamma_{5}\psi_{2}&\rightarrow\bar{\psi}_{2}\gamma_{5}\psi_{1}, \n\\
+\bar{\psi}_{1}\gamma_{\mu}\psi_{2}&\rightarrow-\bar{\psi}_{2}\gamma^{\mu}\psi_{1}, \n\\
+\bar{\psi}_{1}\gamma_{\mu}\gamma_{5}\psi_{2}&\rightarrow-\bar{\psi}_{2}\gamma^{\mu}\gamma_{5}\psi_{1}, \n\\
+\bar{\psi}_{1}\sigma_{\mu\nu}\psi_{2}&\rightarrow\bar{\psi}_{2}\sigma^{\mu\nu}\psi_{1}. \n
+\end{align}
+下面不加证明的给出 $CPT$ 定理.
+\par
+$CPT$ 定理: 如果一个场理论是定域并满足洛伦兹变换不变性的, 且量子化条件满足通常的自旋-统计关系, 则该理论是 $CPT$ 变换下不变的. $CPT$ 定理的成立, 确定了:
+\par
+(1) 粒子与其反粒子质量相等;
+\par
+(2)粒子与其反粒子具有相同的寿命;
+\par
+(3) 粒子与其反粒子具有相反的电磁性质, 包括但不限于电荷, 磁矩等.
+\par
+另外, 既然一般而言对于量子场论 $CPT$ 不变, 那么 $\CP$ 的破坏暗示着 $\textbf{T}$ 必然是破坏的. 但实验上, 我们仍然是通过直接测量 $\CP$ 破坏或 $\textbf{T}$ 破坏来验证是否存在这两种破坏. 这样的方法称作直接验证.
+\subsection{CP 破坏机制}
+在了解了 $\cp$ 变换是如何作用在场中后, 我们便可以更加具体的去讨论究竟是什么样的机制决定了 $\CP$ 破坏的现象以及如何理解这种现象背后的物理. 也正是在了解了它的机制之后我们才能够在此基础上提出新的问题, 也就是本文将要开展的工作.
+\par
+今天我们知道, 基本粒子及其之间的相互作用 (除引力作用外) 均可以被一个统一的理论模型来描述, 即标准模型, 又称 Glashow-Weinberg-Salam 模型\upcite{6}. 标准模型中人们利用 $\textrm{U}(1)\times\textrm{SU}(2)\times\textrm{SU}(3)$ 来描述各种基本相互作用, 其中, $\textrm{U}(1)$ 的全局与定域规范对称性描述电磁相互作用, $\textrm{SU}(2)$ 全局与局域规范对称性描述弱相互作用, $\textrm{SU}(3)$ 全局与局域规范对称性描述强相互作用. 标准模型做过许多成功的实验预言包括但不限于弱电统一\upcite{15}, Higgs 粒子\upcite{16} 等影响物理学进程的重要内容. 这个理论中具有三代轻子与夸克以及三类规范粒子, 而夸克的混合正是理论容纳 $\CP$ 破坏的关键. 由于 $\CP$ 破坏目前仅在弱相互作用中被观测到, 我们将不会讨论电磁场中的破坏现象. 但强相互作用中的 $\CP$ 破坏仍具有讨论的价值, 这点我们会在之后提到. 1963 年, Cabibbo 首先在强子流中引入了 $\textrm{SU}(3)$ 对称\upcite{17}, 并在这种变换下实现了强子在同一个八重态或十重态内的相互转化. 但是在 Cabibbo 理论中, 受当时实验条件所限, 仅仅存在三味夸克, 并且有一部分弱作用本征态并没有参与实际的弱相互作用. 根据这个理论, 在 $K^{+}$ 的衰变反应中 $K^{+}\rightarrow\pi^{+}+l+\bar{l}$ (这里 $l$ 表示轻子) 应当占极大的分支比, 但实验观测给出的结果仅有 $10^{-7}$ 量级. 为了解决这个问题, Glashow, Iliopoulos 和 Maiani 提出了包含着四味夸克的理论并成功地将新一代夸克引入相互作用模型中, 今天我们也把它称作 GIM 机制\upcite{18}. 而他们引入的新夸克 -- 粲夸克, 作为实验预言, 于 1974 年由丁肇中等人领导的实验组在 Brookhaven 国家实验室发\upcite{19}.
+\par
+到 1973 年, Kobayashi 和 Maskawa 将 Cabibbo 的夸克混合思想推广到三代夸克的情形\upcite{20}, 扩充为了直到今天仍在使用的 CKM 夸克混合矩阵. 三代夸克为
+\begin{align}
+\left(
+\begin{array}{c}
+u \\
+d' \\
+\end{array}
+\right),
+\left(
+\begin{array}{c}
+c \\
+s' \\
+\end{array}
+\right),
+\left(
+\begin{array}{c}
+t \\
+b' \\
+\end{array}
+\right),
+\end{align}
+其中
+\begin{align}
+\left(
+\begin{array}{c}
+d' \\
+s' \\
+b' \\
+\end{array}
+\right)
+\left(
+\begin{array}{ccc}
+V_{ud} & V_{us} & V_{ub} \\
+V_{cd} & V_{cs} & V_{cb} \\
+V_{td} & V_{ts} & V_{tb} \\
+\end{array}
+\right)
+\left(
+\begin{array}{c}
+d \\
+s \\
+b \\
+\end{array}
+\right).
+\end{align}
+这里 $(d,s,b)$ 为夸克的质量本征态, $d'$, $s'$, $b'$ 为弱相互作用本征态, 表示三味夸克的混合, 混合矩阵即为
+\begin{align}
+V_{CKM}=\left(
+\begin{array}{ccc}
+V_{ud} & V_{us} & V_{ub} \\
+V_{cd} & V_{cs} & V_{cb} \\
+V_{td} & V_{ts} & V_{tb} \\
+\end{array}
+\right).
+\end{align}
+亦称作 Cabibbo-Kobayashi-Maskawa 矩阵, Kobayashi 与 Maskawa 也因此于 2008 年获得诺贝尔奖. $V_{CKM}$ 共有 9 个实的独立参数, 其中五个来源于带电夸克流的独立位相, 可以随意调整, 故实际上只需要 4 个独立参数即可完整地描述夸克之间的混合. 其中三个可选为三维空间的转动角, 最后一个则是复位相, 分别记为 $\theta_{12}$, $\theta_{13}$, $\theta_{23}$ 与 $\delta$. 若 CKM 矩阵中的 $\delta$ 是一个非零值, 则 $V_{CKM}\neq V_{CKM}^{*}$. 而这正是产生 $\textbf{CP}$ 破坏的根本原因, 所以这个相位有时也称为 $\textbf{CP}$ 破坏角. 它是标准模型所需要的众多基本参数之一. 有关其证明过程只需验证 $\textbf{CP}$ 破坏对 $\mathcal{L}_{int}$ 的影响即可, 详见\upcite{21}. 我们以后会看到, 所有与 $\textbf{CP}$ 破坏相关联的可观测量, 均与 $\delta$ 有关.
+\subsubsection{CKM 矩阵的参数化}
+CKM 矩阵的矩阵元仅能通过实验确定, 但实验上常用的参数化方法有许多, 除了国际惯例
+\begin{align}
+\left(
+\begin{array}{ccc}
+c_{12}c_{13} & s_{12}c_{13} & s_{13}e^{-i\delta_{13}} \\
+-s_{12}c_{23}-c_{12}s_{23}s_{13}e^{i\delta_{13}} & c_{12}c_{23}-s_{12}s_{23}s_{13}e^{i\delta_{13}} & s_{23}c_{13} \\
+s_{12}c_{23}-c_{12}s_{23}s_{13}e^{i\delta_{13}} & -c_{12}c_{23}-s_{12}s_{23}s_{13}e^{i\delta_{13}} & c_{23}c_{13} \\
+\end{array}
+\right),
+\end{align}
+外\upcite{22} ($s_{ij}=\sin\theta_{ij}$, $c_{ij}=\cos\theta_{ij}$), 还有 Wolfenstein 方法\upcite{23}:
+\begin{align}
+\left(
+\begin{array}{ccc}
+1-\frac{\lambda^{2}}{2} & \lambda & A\lambda^{3}(\rho-i\eta) \\
+-\lambda & 1-\frac{\lambda^{2}}{2} & A\lambda^{2} \\
+A\lambda^{3}(1-\rho-i\eta) & -A\lambda^{2} & 1 \\
+\end{array}
+\right)+O(\lambda^{4}),
+\end{align}
+其中 $V_{us}=s_{12}c_{13}=\lambda$, $V_{cb}=A\lambda^{2}$, $V_{ub}=s_{13}e^{-i\delta_{13}}=A\lambda^{3}(\rho-i\eta)$, $\delta_{13}=\arctan{\frac{\eta}{\rho}}$. 既然存在着不同的参数化方式, 那么整个物理系统应当存在一种不随参数化方式改变而改变的物理量. 实际上, $V_{CKM}$ 的位相是可以改变的, 即 CKM 矩阵中的矩阵元满足 $V_{\alpha\beta}'=e^{i(\varphi_{\beta}-\varphi_{\alpha})}V_{\alpha\beta}$, 其中 $\alpha=u,c,t$, $\beta=t,s,b$. 这样的位相变换并不改变物理观测量, 一个重要的不变量即为\upcite{24}
+\begin{align}
+J=c_{12}c_{13}^{2}c_{23}s_{12}s_{13}s_{23}\sin\delta_{13}.
+\end{align}
+它被称作 Jarlskog 不变量. J 的大小正是描述 $\textbf{CP}$ 破坏强度的重要物理量.
+\subsection{CP 破坏的观测现象}
+在了解了 \textbf{CP} 的破坏机制之后, 我们便能够有效的预言或计算实验上应有的观测值. 让我们再将时间回溯至 60 年代. 尽管在弱作用中, $C$ 对称与 $P$ 对称都已经被确认为必然发生破缺, 但彼时人们仍然相信 $CP$ 对称性是一个严格的对称性. 我们还是以弱衰变 $\pi^{+}\rightarrow e^{+}\nu_{e}$ 与 $\pi^{-}\rightarrow e^{-}\bar{\nu}_{e}$ 为例, 如图 1 所示. 这两个过程我们已经知道是会发生 $\textbf{C}$ 破坏的, 同时它们也会破坏 \textbf{P}\upcite{8}, 这意味着虽然在这些弱相互作用主导的反应中, $\textbf{P}$ 与 $\textbf{C}$ 均发生了破缺, 但 $\textbf{CP}$ 仍然是一个良好的对称性. 直到 1964 年, 人们在宇宙射线中观测到 $K_{L}^{0}\rightarrow2\pi$ 的衰变现象, 尽管程度比较微弱, 但这样的现象昭示着在弱相互作用中 \textbf{CP} 亦会发生破缺\upcite{25}.
+\subsubsection{$K^{0}-\bar{K}^{0}$混合}
+在 $\tau$-$\theta$ 疑难中我们曾提到, 具有相同寿命及质量的 $\tau$ 与 $\theta$ 实际上就是 $K$ 介子, 而不带电的 $K$ 介子的正反粒子分别为 $K^{0}$ 与 $\bar{K}^{0}$, 它们都可以衰变到 2$\pi$ 与 $3\pi$ 态, 亦即它们之间可以通过衰变相互转化, 这样的现象我们称作 $K^{0}-\bar{K}^{0}$ 混合. 这是中性介子系统的特殊之处, 其他中性粒子如 $B$、$D$ 等很多中性介子都具有此特性. 对于两种本征态的混合, 通常来说我们有
+\begin{align}
+|K_{1}^{0}\rangle=\frac{1}{\sqrt{2}}(|K^{0}\rangle+|\bar{K}^{0}\rangle), \n\\
+|K_{2}^{0}\rangle=\frac{1}{\sqrt{2}}(|K^{0}\rangle-|\bar{K}^{0}\rangle), \n
+\end{align}
+由于 $CP|K^{0}\rangle=|\bar{K}^{0}\rangle$, $CP|\bar{K}^{0}\rangle=|K^{0}\rangle$. 可知 $|K_{1}^{0}\rangle$ 的 $CP$ 量子数为正而 $|K_{2}^{0}\rangle$ 的 $CP$ 量子数为负. 而对于 $2\pi$ 态, $CP|\pi^{+}\pi^{-}\rangle=|\pi^{+}\pi^{-}\rangle$, $CP|\pi^{0}\pi^{0}\rangle=|\pi^{0}\pi^{0}\rangle$, 即 $2\pi$ 态的 \textbf{CP} 量子数是正的, 而 $3\pi$ 态的 $\textbf{CP}$ 量子数为负. 若假定 $CP$ 守恒, 那么 $K_{1}^{0}$ 只能衰变为 $2\pi$ 态而 $K_{2}^{1}$ 只能衰变到 $3\pi$ 态. 在实验上人们观测到有两种寿命相差较大的 $K$ 介子, 其中一种寿命较短, 称为 $K_{S}$, $\tau_{s}=(0.8953\pm0.0005)\times10^{-10}$s. 另一种则寿命较长, 称为 $K_{L}$, $\tau_{L}=(5.116\pm0.020)\times10^{-8}$s. 根据当时的认知, $K_{L}$ 即理论上的 $K_{2}^{0}$, 只能衰变到 $3\pi$ 态. 1947 年 Rochester 与 Butler 发现的 $K_{1}^{0}$ 便是 $K_{S}$, $K_{L}$ 则直到 1956 年才被 Lederman 等人发现\upcite{26}. 按照这样的理论, \textbf{CP} 不破缺, $K_{S}$ 与 $K_{L}$ 满足
+\begin{align}
+|K_{S}\rangle=|K_{1}^{0}\rangle, \n\\
+|K_{L}\rangle=|K_{2}^{0}\rangle. \n
+\end{align}
+从实验结果我们知道, $K_{S}$ 与 $K_{L}$ 即为质量的本征态而 $K_{1}^{0}$ 与 ${K_{2}^{0}}$ 则为相互作用的本征态. 事情到这里, 一切都好像很完美. 但 1964 年 Cronin, Fitch, Christenson 和 Turlay 等人的实验却宣告了旧有理论的终结. 在他们的实验设计中, 仅有寿命较长的 $K_{L}$ 到达探测器, 理想的情况便是这之中不存在任何到 $2\pi$ 的衰变, 但实验结果却显示, 在 $K_{L}$ 衰变中每小时约有 $1/1000$ 的 $K_{L}$ 衰变为 $2\pi$ 态. 这一结果震惊了当时的物理学界, 因为他们奉为圭臬的 $CP$ 守恒竟然也在自然之手下遭到了破坏. 实验结果表明, $K_{L}$ 并不是严格地等同于 $K_{2}^{0}$, 而是混杂着一小部分的 $K_{1}^{0}$, 即
+\begin{align}
+|K_{L}\rangle=\frac{1}{\sqrt{1+|\bar{\epsilon}|^{2}}}(|K_{2}^{0}+\bar{\epsilon}|K_{1}^{0}\rangle), \n\\
+|K_{S}\rangle=\frac{1}{\sqrt{1+|\bar{\epsilon}|^{2}}}(|K_{1}^{0}+\bar{\epsilon}|K_{2}^{0}\rangle). \n
+\end{align}
+今天的实验测定告诉我们, $|\bar{\epsilon}|=2.3\times10^{-3}$. 继 1964 年发现 $K_{L}\rightarrow2\pi$ 对 $\textbf{CP}$ 的破坏之后, 1973 年, 人们还发现了在半轻子衰变 $K_L\rightarrow\mu^{+}\nu_{\mu}\pi^{-}$ 和 $K_{L}\rightarrow e^{+}\nu_{e}\pi^{-}$ 中的 \textbf{CP} 破坏. 实验上的可观测量即为 $\epsilon$ 及 $\bar{\epsilon}$, 它们都是和破坏角 $\delta$ 有直接关联的, 同时也起着描述 $\textbf{CP}$ 破坏强弱的作用. 后来人们也发现了在 $B$ 介子中的 \textbf{CP} 破坏现象\upcite{27}. 由于 $B$ 介子的质量较大, 微扰更便于计算, 今天人们观测 $\textbf{CP}$ 的主要手段便是 $B$ 工厂, 在美国, 欧洲与日本都建立起了大型加速器以便于 $B$ 工厂的观测\upcite{28}\upcite{29}\upcite{30}. 至此, 人类已知的 $\textbf{CP}$ 破坏现象已经讨论清楚, 但已知的所有反应中, $\textbf{CP}$ 破坏均只在弱相互作用导致的衰变反应中产生, 直到今天为止我们还没有观测到强相互作用中的 $\textbf{CP}$ 破坏现象, 而这正是本文将讨论的主要问题. 另外, 在探究粒子世界对称性的道路上, 人类传统的认知被一步步推翻, 尽管今天的实验事实仍然支持 $CPT$ 是一个良好的对称性. 但谁也不知道日后的实验是否会反驳这一观点. 倘若 $CPT$ 亦不是一条基本的对称性, 那么以其为基础的并被实验反复证实的定域场论也是存在问题的, 目前意大利 $\phi$ 介子工厂的一个主要实验目的便是验证 $CPT$ 是否守恒.
+\subsection{CP 破坏的意义}
+1967 年, 为了解释早期宇宙中重子与反重子的不对称性, Sakharov 提出了三个基本条件\upcite{31}:
+\par
+1. 重子数不守恒
+\par
+2. \textbf{CP} 不守恒.
+\par
+3. 宇宙演化过程中存在一定时间的非平衡热力学过程.
+\par
+我们知道在我们的可观测宇宙中, 正物质远远多于反物质, 否则宇宙中不会有如此多的物质存在, 遑论诞生星系甚至生命. Sakharov 的判断指出, $\textbf{CP}$ 在宇宙演化过程中应当是长期保持不守恒的, 这样才可以解释我们现在所看到的宇宙. 但如前所述, 尽管 $\textbf{CP}$ 破坏在弱相互作用中是存在的 (强相互作用中虽然暂未发现, 但只会是更加微弱), $10^{-3}$ 的量级在今天来看显得实在太过微弱以至于不可能导致我们在可观测范围内的宇宙几乎都是正物质. 这意味着标准模型框架下的 \textbf{CP} 破坏机制还不足以满足宇宙演化过程中产生物质不对称的要求, \textbf{CP} 破坏的解释对于探究新物理如超标准模型\upcite{32}乃至超对称\upcite{33} 都是非常有价值的. 除此之外, $\textbf{CP}$ 破坏机制也被认为与轻子起源以及中微子的演化有关\upcite{34}.
+\subsection{强相互作用中的 CP 破坏}
+首先我们给出量子色动力学的拉氏量,
+\begin{align}
+\mathcal{L}_{QCD}=\bar{\psi}(i\slashed{D}-m)\psi-\frac{1}{4}tr\{F^{\mu\nu}F_{\mu\nu}\}+\frac{\theta g^{2}}{32\pi^{2}}tr\{F^{\mu\nu}\tilde{F}_{\mu\nu}\}.
+\end{align}
+这里 $F_{\mu\nu}$ 为八味混合胶子的场强张量, 等号右边的前两项对于 $CP$ 变换都是保持不变的, 唯有最后一项反常项对 $CP$ 变换发生变化, 即 $\textbf{CP}$ 对于强相互作用的拉氏量发生破坏, 这样将会在实验上引起中子的电偶极矩为一个非零值. 然而实验观测表明中子电偶极矩的上界为 $|d_{n}|<1.1\times10^{-25}$e·cm, 对于强相互作用中的 $\textbf{CP}$ 破坏, 这意味着 $\bar{\theta}<2\times10^{-10}$. 这里 $\bar{\theta}$ 是重整化后的 $\theta$, 如此微小的破坏暗示着强相互作用中很有可能不存在 \textbf{CP} 破坏, 又或者说, 即使它存在, 为何它如此微弱也是令物理学家们困扰了长达半个多世纪的问题.
+\subsubsection{强 CP 破坏的解决办法}
+这里我们谈谈主流的解决强 $\textbf{CP}$ 破坏问题的方法.
+\par
+1. 轴子模型\upcite{35}.
+\par
+1977 年, Peccei 与 Quinn 为了解释强相互作用中极其微小的破坏角, 提出了 Peccei-Quinn 对称性. 他们引入了一个 $\textrm{U}(1)$ 规范场, 这个新的场的引入将导致一种新粒子 -- 轴子的诞生, 并且正是由于轴子的产生使得 $\bar{\theta}$ 不再是一个任意的常值而是由于轴子场的产生确定了的零值, 即 $\textbf{CP}$ 破坏的效应不再单独体现在强相互作用的反常项中而是被引入的轴子场所反映出来. 由于轴子的性质十分微妙, 也一度被认为是暗物质的可能候选者, 轴子模型一直都被认为是解决强 \textbf{CP} 破坏问题最有希望的模型. 但直至今日, 还没有任何一个实验能够有力地证明轴子的存在.
+\par
+2. 微调\upcite{36}.
+\par
+我们知道标准模型的参数是非常多的, 由于强相互作用中的 $\bar{\theta}$ 来源于Yukawa 耦合, 与 $m_{u}$ (顶夸克质量) 直接相关而 $m_{u}$ 又恰好是标准模型的众多参数之一. 一部分物理学家认为完全可以调整参数使得 $m_{u}=0$, 这样的话强 \textbf{CP} 破坏问题便迎刃而解, $CP$ 对称性仍旧在强相互作用中被保持. 但问题有两个, 一是这样的处理仍然是在已有的标准模型下去修补, 但今天我们知道标准模型是还有很大的缺陷的, 新的标准模型则将赋予 $\textbf{CP}$ 破坏新的机制, 与微调的思想差距非常之大. 二则是尽管我们有理由因为 \textbf{CP} 不破缺来保证 $\bar{\theta}$ 可以为 0, 但我们并没有任何可靠的对称性保证 $m_{u}$ 为零值.
+\par
+3. 自发 $CP$ 对称性破缺\upcite{37}.
+\par
+不仅仅是在强相互作用中, 即使是在弱相互作用中我们观测到的 $\textbf{CP}$ 破坏也不过是 $10^{-3}$ 量级. 如此微小的破缺程度让我们不禁联想, 有没有可能 $\textbf{CP}$ 本就是不破坏的呢? 我们可以大胆的假设, 在高能标下 $CP$ 是一个良好的对称性, 只是由于在我们所进行观测的 MeV $\sim$ GeV 能标下由于能量的降低产生的自发破缺现象. 若是这样, 无论是强作用还是弱作用中, 出现如此微小的破缺相位都是可以得到合理的解释的, 同时这也暗示着 $\textbf{CP}$ 破坏正是与夸克之间的混合相关, 更重要的是还可能与三代夸克之间的质量层级有联系. 本文将从这个解决思路出发, 尝试性地对自发 $\textbf{CP}$ 破坏进行阐述并解释强 $\textbf{CP}$ 破坏问题.
+\subsection{论文架构}
+\subsubsection{有效场论}
+由于处理的是低能标下的现象, 显然我们需要利用一些有效的作用量或是拉氏量来处理问题, 本文第二部分将对有效场论进行简单的介绍并说明如何利用有效拉氏量来修正旧有理论\upcite{38}\upcite{39}\upcite{40}.
+\subsubsection{Vafa-Witten 定理}
+Vafa-Witten 定理曾指出\upcite{41}, 自发的 $\textbf{P}$ 破坏在强相互作用中是不会发生的, 但实际上在条件适当的情况下, 他们的定理反倒证明了自发 \textbf{CP} 破坏是可能的. 我们将在第三部分对该定理做简单的介绍并指出我们的模型符合定理所声称的条件.
+\subsubsection{Nambu-Jona-Lasinio 模型 (NJL 模型)}
+第四部分将利用 NJL 模型\upcite{42}\upcite{43}对高能标情形时的 $\textbf{CP}$ 破缺相位与夸克质量, 温度以及相结构的关系作一些讨论, 说明强相互作用中的 $\textbf{CP}$ 破坏确是在低能标下的特有现象.
+\subsubsection{手性微扰理论}
+手性微扰理论\upcite{40}\upcite{44}同样是从自发 \textbf{CP} 破坏的思路出发解决强 \textbf{CP} 破坏问题的方法之一, 前人已有过具体的计算, 第五部分我们将介绍性的陈述手性微扰理论并将第四部分的计算结果与其对比.
+\subsubsection{结论}
+我们将在第六部分给出最后的结论. 从 NJL 模型入手计算得到的自发 $\textbf{CP}$ 破坏的确可以在低能标下发生. 强 $\textbf{CP}$ 破坏是存在且极其微弱的.
+%========================================================================%
+
+\section{有效场论概述}
+历经千百万次的检验, 我们几乎可以确信 QCD 就是描述强相互作用的正确理论, 尽管我们仍然不能通过第一性原理来计算复合态如夸克构成的重子与介子之间的相互作用, 在唯象的尺度上它却为实验设计提供了许多的可行路径. 我们之所以无法将 QCD 理论的内部结构阐明是因为我们对于强子尺度的 QCD 动力学还是很无力的, 因为与 QED 的处理方式不同, 强相互作用中我们碰到的是一个无法对其作微扰展开的很大的耦合常数. 但在实验以及唯象的分析过程中我们发现, 正因为现在所能达到的能量尺度仍在强子尺度, 核子中的动力学实际上可以分为至少两个差别很大的尺度. 一个是主要的核子间相互作用的尺度以及绝大多数介子间产生交换力的尺度, 还有一个较大的能量尺度则是手性对称破缺的尺度.
+\par
+既然在核物理中很自然的存在着如此明显的尺度分隔, 我们当然会考虑将拉氏量根据尺度分成两部分以便于更方便的处理问题. 这种方法其实也是我们经常遇到的, 重整化理论的核心便是源于此. 从而我们在处理 QCD 问题时有一种方法称作有效场论. 在低能的核物理尺度, 它具有非常好的自洽性与预言性, 尽管在有效场论中我们舍弃了一些强相互作用中的动力学细节, 将它们以一些未决的常数代替, 但这并不影响它比传统的唯象方法更能体现出核子与介子之间相互作用的微妙之处, 因为有效场论仅仅是分离了尺度, 强相互作用所要求的 $\textrm{SU}(3)$ 对称性在有效场论中仍然得到保持. 这一部分我们便将略为深入地介绍一下有效场论.
+\subsection{什么是有效?}
+什么叫做有效理论? 举个简单的例子, 在电动力学中, 我们都曾学过静电势的多极展开, 假设在某处有限空间内有电荷, 电荷分布满足 $\rho(r')$, 电荷分布的尺度为 $R$, 则在较远处 $(r\gg R)$, 我们可对电势按 Taylor 展开的方法逐级展开, 从而得到零级的总电荷, 一级的电偶极矩, 二级的电四极矩等物理性质. 在尺度足够大的情况下, 我们并不关心极小尺度内的某个细节, 而更关注在全局产生的物理性质.
+\par
+让我们将比喻转回到场论中来, 假设有一个拉氏量, 它的场为 $\Psi$ 且这条拉氏量在一定能量尺度下与实验符合得很好. 那么配分函数可由路径积分给出
+\begin{align}
+Z=\int\,\mathcal{D}\Psi e^{i\int\mathcal{L}(\Psi)}.
+\end{align}
+而这时我们想要知道在比现在的能量尺度 $\Lambda$ 小得多时整套理论会变成什么样子, 我们可以根据动量是否比 $\Lambda$ 更大将场 $\Psi$ 分为两部分, 分别为 $\Psi_{h}$ 和 $\Psi_{l}$, 分别代表动量更大与动量更小的部分. 对 $\Psi_{h}$ 积分,
+\begin{align}
+Z=\int\,\mathcal{D}\Psi_{l}e^{i\int\,\mathcal{L}_{eff}(\Psi_{l})},
+\end{align}
+这里的 $\mathcal{L}_{eff}$ 便是有效拉氏量, 在 $D$ 维时空中,
+\begin{align}
+\int\,d^{D}x\mathcal{L}_{eff}(\Psi_{l})
+=\int\,d^{D}x\sum_{i}g_{i}(\Lambda)\mathcal{O}_{i}(\Psi_{l}).
+\end{align}
+算符 $\mathcal{O}_{i}$ 包含了慢场 $\Psi_{l}$, 它有两个重要性质. 第一, 这些算符都是局域的, 它们只包含在同一时空点的场, 但是它们可以包含这些场的任意多个导数及其组合. 实际上由不确定性原理由于动量 $Q\leq\Lambda$, 能探测到的空间尺度大约为 $1/Q\geq1/\Lambda$ 从而对于小于 $1/\Lambda$ 的空间尺度只能有平均的取值. 第二, 只要场的分离做得足够好, $\mathcal{O}_{i}$ 与原有的场论所依赖的变换群是完全相同的. 即如果原有的拉氏量对某个对称变换不发生破缺, 那么有效拉氏量亦不会, 当然如果这条对称性会产生自发破缺, 那么对于有效拉氏量, 它只能通过非线性的变换实现相应的对称. 而如果某条对称性在经典尺度或是量子尺度发生了明显的破缺, 则算符在低能处也会伴随有同样的破缺性质. 但这对场的分离要求很高, 通常来说 $\mathcal{L}_{eff}$ 包含有由 $\Psi_{l}$ 以及 $\dot{\Psi}_{l}$ 主导的相互作用项. 这时 $\Psi_{l}$ 与其共轭动量的关系不再是显然的了, 即这时相互作用的哈密顿量不再是单纯的减去相互作用的拉氏量而还需要再添入一些与时间导数相关的项. 我们也可以直接在 $\mathcal{L}_{eff}$ 中加入一项 $\Delta\mathcal{L}$. 举个例子, 对于实标量场 $\Psi_{l}$, 如果
+\begin{align}
+\mathcal{L}_{eff}=\frac{1}{2}\dot{\Psi}_{l}^{T}A(\Psi_{l})\dot{\Psi}_{l}+\cdots,
+\end{align}
+那么
+\begin{align}
+\Delta\mathcal{L}=\frac{i}{2}\delta^{D}(0)tr[\ln{(A^{-1}(\Psi_{l}))}]+\cdots
+\end{align}
+这样的拉氏量显然是协变的\upcite{45}, 但添入的非线性项将会引起自相互作用, 这会使得拉氏量没有被良好定义, 这里我们通常需要对有效拉氏量作一些正规化使得它是一个良定义的理论, $\delta^{D}(0)$ 在维数正规化时可以被消去, 而对数项则是在重整化中为了去除真空泡所必须的项.
+\par
+而对于系数 $g_{i}$, 它们是基础理论中参数的函数且同截断 $\Lambda$ 同样相关 -- 即我们熟知的跑动耦合常数. 而低能区的可观测量显然对于 $\Lambda$ 的变化是不敏感的, 这样我们就给出了 $g_{i}$ 与 $\Lambda$ 相关性的一些限制. 描述这种相关性的即重整化群方程.
+\par
+当基础理论存在特征质量尺度 $M$ 时, 有效拉氏量的存在将大大简化对具体问题的处理. 对于 $\Lambda\leq M$ 的情形, 由 $\Psi_{l}$ 表示的有效自由度与 $\Psi$ 表示的自由度一般都会存在显著的差异. 一个最简单的例子便是某个物理粒子的质量为 $M$, 那么这个粒子的产生及衰变都会包含较大的动量从而与有效场论无关. 而粒子交换相关的效应则是短程的故只会间接地体现在 $g_{i}$ 中. 当粒子在原有理论中甚至是不稳定的时候, 它在低能区则根本不会有出现的可能, 从而我们无需对这部分考虑 $\Psi_{l}$ 场的相关性. 除此之外还有各种各样的应用 $M$ 作为某个能量尺度的例子, 可见文献\upcite{46}\upcite{47}. 但无论这些例子有多少, 我们想说明的只有一点, 那就是质量 $M$ 为我们提供了什么时候会在系数 $g_{i}$ 中体现出高能效应强度的信息. 这便为我们接下来以 $Q/M$ 做幂展开奠定了坚实基础.
+\par
+如果我们可以对基础理论进行求解, 那么就可以相应的算出 $g_{i}$ 并得到能够包含基础解的 $\mathcal{L}_{eff}$ 的形式. 但事实是我们通常都找不到原有理论的解, 否则也无需到有效理论中寻求答案. 人们发展有效理论正是为了从一些低能区的现象对事物的基本规律进行推演从而在假定一些性质诸如幺正性或是某些对称性的基础上将有效理论还原为一个自洽而完整的理论, 我们从量子力学走到量子场论经历的不正是这样的路程么? 而作为非微扰场论的低能理论, 有效场论可以说就是现代的 $S$-矩阵理论. 量子化的所有理论的根本目的无非是去探索可观测量之间的联系, 而基于拉氏量的场论正是给出相应的自由度与对称性最简单的方式. 当然作为一个有效理论, 来源于截断 $\Lambda\leq M$ 的正规化过程将导致一些我们不太关心的自由度被完全隔绝开来从而在树图中也只包含 $Q<\Lambda$ 的动量. 尽管现在重整化仍然是必须的, 但在这里它的意义不再是消除那些可憎的无穷大, 而是将振幅的一些截断细节剔除 (场的重新定义将使得振幅变为不在壳的状态, 这样的话我们将无法对其进行测量) 并将可观测量与拉氏量的参数联系起来, 毕竟有效场论本身就不适用于高能区.
+\subsection{剔除自由度}
+根据之前的讨论, 我们只需要考虑动量满足 $Q\ll M_{QCD}\sim1$ GeV 的自由度即可. 这样的条件帮助我们限制了许多可能的自由度, 比如单独的夸克自由度以及许多强子态. 核子质量 $m_{N}$ 与 $M_{QCD}$ 比起来当然算不上轻, 但核反应的初态与末态都有许多的核子存在, 它们的动量几乎为零, 故核子场在有效场论中显然是需要的, 核子的传播子则表示为穿过整个图的直线. 我们基本可以假定核子为非相对论性的从而具有非相对论性的能量色散关系 $E=\vec{p}^{2}/2m_{N}$. 而其相对论性的修正可以由以 $Q/m_{N}$ 为幂的级数展开完成.
+\par
+而至于其他需要哪些强子态则取决于我们究竟对哪一个能标感兴趣. 类比于之前提到的静电势的多极展开, 我们可以将相互作用近似地视作核子之间的相互作用以及一系列介子间交换的相互作用, 并添入逐级递增的导数项. 第一阶的接触作用是与动量无关的, 多极修正则以 $Q/m_{m}$ 为幂展开. 类似地, 重子态也可以以相同方式引入自由度.
+\par
+除了核子之外, 最令人关心的便是最轻的强子态, 即 $\pi$ 介子, 其质量 $m_{\pi}\sim M_{nuc}$; 其次则是 $\Delta$ 同量素, $\delta m\equiv m_{\Delta}-m_{N}\sim M_{nuc}$. 如果我们不考虑外 $\pi$ 介子的话, 在 $Q\leq M_{nuc}$ 时我们可以把 $\pi$ 与 $\Delta$ 看作一种复合态, 类似于某种较重的复合粒子. 而如果 $Q\geq m_{\pi}$, $\pi$ 介子则具有相对论性从而必须包含外场 $\bm{\pi}$. 在 $Q\geq m_{\Delta}-m_{N}$ 时我们也同样必须考虑非相对论性的 $\Delta$ 场. 由于二者的临界值有一定差距, 我们可以在稍微高过 $\pi$ 介子临界能量的能标处将 $\Delta$ 场视为一定区域内的动量集合, 只保留外 $\pi$ 介子场.
+\subsection{对称性}
+有效场论中最重要的一件事便是保持对称性, 因为对称性限制了各种相互作用的形式, 尽管有效理论中我们只对有限的能标进行处理, 但场的相互作用形式仍不应因能标的选取而改变. 举个例子, 对于标准模型的电弱理论, 能标大概在几个 GeV 的级别, 其中包含了最轻的轻子与夸克, 胶子以及光子; 弱相互作用的规范玻色子与重夸克及轻子可以被当作是不可重整的相互作用 (在截断能标之上). 假设我们感兴趣的便是最轻的两味夸克模型, 满足味二重态 $q=(u\ \ d)^{T}$. 胶子 (光子) 场由 $G_{\mu}$ ($A_{\mu}$) 表示, 其场强张量为 $G_{\mu\nu}$ ($F_{\mu\nu}$), 那么标准模型在这部分的有效拉氏量为\upcite{48}
+\begin{align}
+\mathcal{L}&=-\bar{q}(\slashed{\p}-ig_{s}\slashed{G}-ieQ\slashed{A})q
+-\frac{1}{2}(m_{u}+m_{d})\bar{q}q+\frac{1}{2}(m_{d}-m_{u})\bar{q}\sigma_{i}q \n\\
+&-\frac{1}{2}tr{[G_{\mu\nu}G^{\mu\nu}]}
++\frac{\bar{\theta}g_{s}^{2}}{32\pi^{2}}\epsilon_{\mu\nu\rho\sigma}tr{[G^{\mu\nu}G^{\rho\sigma}]}-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}+\cdots
+\end{align}
+这里 $\sigma_{i}$ 为 Pauli 矩阵, $Q=1/6+\sigma_{i}/2$ 为夸克电荷矩阵, $\cdots$ 则表示不可重整的项. 这里我们可以把它们忽略掉只考虑第一级近似, 这也是极为合理的. 领头阶的拉氏量 (QCD+ 夸克的 QED) 共有 5 个参数: 强相互作用与电磁相互作用的耦合常数, 顶夸克与底夸克的质量以及强 CP 破坏参数. 这里我们着重讨论有效场论的构建所需遵循的对称性, 而之前提到 $\bar{\theta}$ 对应的实际上是一个瞬子场, 几乎为零的值暗示着很有可能存在某种对称性破缺, 所以我们在这一步先不考虑 $\bar{\theta}$ 的效应.
+\par
+那么剩下的几项必然拥有我们熟知的 Lorentz 对称性, 宇称对称性以及时间反演对称性. 除此之外, 局域的 $\textrm{SU}(3)$ 对称性仍存在, 对应重子数的全局 $\textrm{U}(1)$ 对称性亦存在, 但 $\textrm{U}(1)$ 轴对称性则是反常的. 在 $m_{u}\approx m_{d}\approx\epsilon\approx0$ 时, 还会存在手性对称性 $\textrm{SU}(2)\otimes \textrm{SU}(2)$, 对应两种无穷小旋转
+\begin{align}
+\delta q_{L}=-i\epsilon_{L}\cdot\frac{\sigma_{i}}{2}q_{L},\quad\delta q_{R}=-i\epsilon_{R}\cdot\frac{\sigma_{i}}{2}q_{R},
+\end{align}
+$\sigma/2$ 即 $\textrm{SU}(2)$ 中的生成元. 对夸克双线型作用, $\textrm{SU}(2)\otimes \textrm{SU}(2)\sim \textrm{SO}(4)$. 而质量项与电磁相互作用都以 $\textrm{SO}(4)$ 张量的方式变换, 故在手性变换下都是会发生变化的, 从而都会破坏手征对称性. 算符 $\bar{q}q$ 作为某个 $\textrm{SO}(4)$ 矢量的第四个分量破坏手征对称,
+\begin{align}
+S=(\bar{q}i\gamma_{5}\sigma q,\bar{q}q),
+\end{align}
+而 $-\bar{q}\sigma_{i}q$ 是另一个 $\textrm{SO}(4)$ 矢量的第三分量,
+\begin{align}
+P=(-\bar{q}\sigma q,\bar{q}i\gamma_{5}q).
+\end{align}
+有效场论在低能区给出的 $S$-矩阵与原有理论应当一致. 虽然随意选择场都是有效的, 但显然选取包含上述对称或者破缺的场对我们的处理更方便, 得到的结论也更清晰. 此外, 即使通过规范变换可能会产生其他形式的相互作用, 其中自然也会伴随着某些包含对称性的项, 我们只需按照如下的方式来选择场, 就仍能够给出逐项对应特定对称性的拉氏量.
+\par
+\textbf{时空对称性}. 宇称与时间反演在低能情形仍能直接应用, 但 Lorentz 变换则需要注意. $\pi$ 介子场虽然可以由相对论性的赝标量场来表示, 但稍重一些的稳定场则略显复杂. 如果将核子与 $\Delta$ 介子用场 $\psi$ 来表示, 且二者质量大约相等, 即 $m\sim M$, 那么相互作用中会含有 $\p_{0}\psi\sim-im\psi+\cdots$ 并且会产生与 $m/M$ 相关的因子, 这使得我们需要对展开重新求和, 这样才能达到最终以 $Q/M$ 为幂展开的目的. 实际上所得结果不过就是相对性理论的非相对论性展开的重新排列.
+\par
+我们对场进行重定义, $\psi'\equiv e^{-imv\cdot x}\psi$, $v$ 为考虑轻粒子均在以某个以 $v$ 速度进行运动的重粒子的参考系内, 这样的重定义相当于消除了在这个参考系中的静能. 那么拉氏量便与 $m/M$ 无关但会包含外界速度 $v_{\mu}$. 而 Lorentz 不变性要求拉氏量经过一个推动变换到另一个具有速度 $\omega_{\mu}=v_{\mu}+q_{\mu}/m$ ($q$ 是非相对论性的) 参考系中时仍保持不变. 两个系中的场相差一个相位. 而 $\psi$ 的导数项变换则更为复杂, 我们在重定义的基础上引入协变导数
+\begin{align}
+D_{\mu}\p_{\mu}-imv_{\mu},
+\end{align}
+这样 $D_{\mu}\psi_{v}$ 仍以 $\psi_{v}$ 的方式变换. 相应的我们可以给出协变速度以及对称导数的定义
+\begin{align}
+\mathcal{V}_{\mu}\equiv\frac{i}{2m}(D_{\mu}-D_{\mu}^{\dagger}),\quad
+\textrm{d}\equiv\frac{1}{2m}(D_{\mu}+D_{\mu}^{\dagger}),
+\end{align}
+这些定义就是满足 Lorentz 不变性的. 也可以用同样的方式处理自旋, 如果 $\psi$ 有自旋 $1/2$, 可定义协变自旋
+\begin{align}
+\Sigma_{\mu}=\frac{i}{2}\gamma_{5}\sigma_{\mu\nu}\mathcal{V},
+\end{align}
+由于 $(1-\slashed{v})\psi_{v}=0$, 在低能区有效的自由度实际上只有 $\mathcal{V}$ 与 $\Sigma$ 二者且满足 $\Sigma\cdot\mathcal{V}=0$. 如果 $\psi$ 有自旋 $3/2$, 那么就会有四个有效的自由度, 同样的可以由 $v\cdot\psi_{v}=0$ 及 $\gamma_{5}\sigma^{\mu\nu}v_{\mu}(\psi_{v})_{\nu}=0$ 导出. 相应的 $3/2$-协变自旋场为
+\begin{align}
+(\Psi_{v})_{\mu}=(\psi_{u})_{\mu}-\frac{i}{m}v_{\mu}\p\cdot\psi_{v}.
+\end{align}
+在引入这些协变项之后, 有效拉氏量中的 Lorentz 不变性才能得到保持. 而这些不变性在重粒子的静止参考系中又退化为 $\textrm{SO}(3)$ 不变的算符. 我们引入重粒子的目的就是在旋转不变性的基础上加上缓慢的速度推动不变性从而既让 Lorentz 对称性在低能区得到满足又不至于退化到 Galileo 对称性去.
+\par
+\textbf{内禀对称性} Goldstone 早在 1962 年便指出无质量的 Goldstone 玻色子会由于 $\textrm{SO}(4)\rightarrow \textrm{SO}(3)$ 的自发破缺而产生, 我们认为 $\pi$ 介子的产生机制正是如此. 所以 $\pi$ 介子与 $\textrm{SO}(4)$ 群中破缺的生成元有关且这些生成元所存在的场处在 $S^{3}$ 球面上. 我们定义这个球的半径为 $f_{\pi}$, 它与手性对称的破缺尺度 $\Lambda_{\chi SB}$ 相关, 但目前为止我们只有通过 QCD 的动力学对称破缺才能够导出这个量. 一般利用 $\pi$ 介子的衰变反应来研究这个半径, 即 $\pi$ 介子破缺常数, $f_{\pi}\sim93$ MeV. 如果我们在四维欧几里得空间 $E^{4}$ 中嵌入一个三维球面 $S^{3}$, 那么显然 $\textrm{SO}(4)$ 可以视作 $E^{4}$ 超平面上的旋转变换群. 举个例子, 同位旋构成的旋转 $\textrm{SU}(2)_{V}$ 在超平面上是垂直于某条空间坐标轴的, 而轴对称性 $\textrm{SU}(2)_A$ 则是包含了该空间坐标轴的旋转.
+\par
+假定四条 Descartes 坐标轴为 $\{\vec{\varphi},\varphi_{4}=\sigma\}$ 服从 $\sigma^{2}+\vec{\varphi}^{2}=f_{\pi}^{2}/4$. 这样设定的四条轴显然是以 $\textrm{SO}(4)$ 的方式进行旋转变换的, 对于无穷小旋转, 若参数为 $\epsilon_{V}$,
+\begin{align}
+\delta_{V}\varphi=\epsilon_{V}\times\varphi.
+\end{align}
+但其实我们可以引入更简单的一套坐标, 只引入三个与场 $\pi$ 相关的自由度而不引入任何约束条件. 球面上的任一点都能由 4-旋转 $R(\pi)$ 给出, $R(\pi)R^{T}(\bm{\pi})=1$, 除了极点 $(0,f_{\pi}/2)$ 不在定义范围以外, 其余均满足
+\begin{align}
+\varphi_{\alpha}(\vec{\pi})=R_{\alpha4}(\bm{\pi})\frac{f_{\pi}}{2}.
+\end{align}
+对 $R$ 作不同的参数化将会得到不同的 $\pi$ 介子场, 介子场的旋转表示为 $\delta\vec{\pi}=\epsilon\times\pi$. 显然这样的旋转在 $\textrm{SU}(2)_{V}$ 下是正常的旋转, 但在轴变换群 $\textrm{SU}(2)_{A}$ 中则是非线性的, 我们现在对 $R(\pi)$ 取一类特别的参数化以便于更清楚地观察 $\pi$ 介子场是如何产生非线性的变换的. 基本的想法即构造一个在未破缺的子群中按照破缺的生成元的方式变换的协变量, 而为了做到这一点, 我们需要引入一个与场本身相关的参数 $\epsilon_{A}$, 它是轴变换下的一个参数, 与 $\pi$ 的作用方式为 $\epsilon_{A}\times\bm{\pi}/f_{\pi}$. 我们按照与前一部分相似的方式定义 $\pi$ 介子场中的协变导数
+\begin{align}
+\textbf{D}_{\mu}=\frac{\p_{\mu}\bm{\pi}}{f_{\pi}}
+\end{align}
+相应的
+\begin{align}
+\delta_{V}\textbf{D}_{\mu}=\epsilon_{V}\times\textbf{D}_{\mu},
+\delta_{A}\textbf{D}_{\mu}=(\epsilon_{A}\times\frac{\bm{\pi}}{f_{\pi}})\times\textbf{D}_{\mu}.
+\end{align}
+通过对 $\delta_{A}\textbf{D}_{\mu}$ 的观察, 不难发现 $\textbf{D}_{\mu}$ 的协变导数可以由矢量场
+\begin{align}
+\textbf{E}_{\mu}=\frac{2i}{f_{\pi}^{2}}\bm{\pi}\times\p_{\mu}\bm{\pi}
+\end{align}
+构成, 即
+\begin{align}
+\mathcal{D}_{\mu}\textbf{D}_{\nu}=\p_{\mu}\textbf{D}_{\nu}+i\textbf{E}_{\mu}\times\textbf{D}_{\nu}.
+\end{align}
+而介子场对应的是破缺的生成元, 可以尝试将它们尽数吸收到同一个矩阵中, $u(\bm{\pi}\cdot\textbf{t})\equiv a(\bm{\pi}^{2})+ib(\bm{\pi}^{2})\bm{\pi}\cdot\textbf{t}$, 其中 $a(\bm{\pi}^{2})$ 与 $b(\bm{\pi}^{2})$ 两个函数由 $R(\bm{\pi})$ 决定, 从而
+\begin{align}
+\textbf{D}_{\mu}\cdot\textbf{t}=-\frac{i}{4}(u^{\dagger}\p_{\mu}u-u\p_{\mu}u^{\dagger}),
+\textbf{E}_{\mu}\cdot\textbf{t}=\frac{1}{2}(u^{\dagger}\p_{\mu}u+u\p_{\mu}u^{\dagger}).
+\end{align}
+另外还有一些常用的参数化方法, 一种是我们熟知的 sigma 模型参数化
+\begin{align}
+u^{2}=\sqrt{1-\frac{4\bm{\pi}^{2}}{f_{\pi}^{2}}}+\frac{4i}{f_{\pi}}\bm{\pi}\cdot\textbf{t}
+\end{align}
+以及指数参数化 $u=e^{\frac{2i}{f_{\pi}}{\bm{\pi}\cdot\textbf{t}}}$.
+\par
+在引入这样的参数化之后我们就能很容易的构造出手性不变的非线性变换的场: 同位旋标量生成了 $\textbf{D}_{\mu}$ 与 场 $\psi$ 以及它们的协变导数, 这样的构造在整个 $\textrm{SU}(2)\times \textrm{SU}(2)$ 群中总是保持不变的. 而破坏了手征对称的算符 $T_{\alpha\beta\cdots}[\pi;\textbf{D}_{\mu},\psi]$ 则需当作 $S$, $P$ 与 $T^{\mu}$ 的张量积在有效理论中构造出来, 只有这样才能够保持低能的 $S$-矩阵元仍具有相应的内禀对称性. 到这里, 我们之前所陈述的 $\textrm{SU}(2)\times \textrm{SU}(2)$ 对称性在对称破缺前后都能够在低能区构造出来, 接下来仅剩 $\textrm{U}(1)$ 与 $\textrm{SU}(3)$ 对称性.
+\par
+由于有效场论考虑的只有最低阶的色单态, 保持色不变性并不是一件令人困扰的事情. 软光子 (动量小于 $M$) 会与 $\pi$ 介子, 核子以及 $\Delta$ 粒子耦合故不能被直接积掉, 这些耦合显然是服从 $\textrm{U}(1)$ 规范不变的. 光子场 $A_{\mu}$ 在协变导数中以如下方式变换,
+\begin{align}
+\p_{\mu}\pi_{a}\rightarrow\p_{\mu}\pi_{a}-eA_{\mu}\epsilon_{3ab}\pi_{b},\quad
+\p_{\mu}\psi\rightarrow\p_{\mu}\psi-ieA_{\mu}Q_{\psi}\psi,
+\end{align}
+这里 $Q_{\psi}$ 为场 $\psi$ 的荷矩阵. 另外, 有关规范不变还有一个细节问题需要注意,由于在同位旋的 $\textrm{SO}(4)$ 矢量中第三分量会引起手性反常, 在电磁相互作用下手征对称显然会发生破缺. 那么有效拉氏量中也应以同样的方式引入一项会产生反常的手性变换. 实际上这意味着在 QCD 的有效理论中与 $\bar{\theta}$ 相关的反常项仍然会出现, 只是形式不同而已\upcite{49}.
+\subsection{数幂规则}
+尽管对称性帮助我们剔除了许多不必要的自由度, 但我们需要面对的物理参数仍然浩如烟海. 我们将唯一的希望寄托在了通过幂次排列的方式让每一级的贡献能够有序的表示. 虽然不可能所有的耦合常数都小到足以让幂展开收敛, 但有一个足够小的量是我们能够放心大胆地展开的, 即 $Q$.
+\par
+任意 Feynman 图中 $Q$ 的幂次决定于顶点处的相互作用, 我们知道顶点处会有与空间导数相关的相互作用, 而这会在顶点处产生一个 3-动量, 从而与 $Q$ 联系上. 类似地, 每一个时间导数也会带上一个 $Q$. 在任一圈中, 根据传播子出现的能量尺度, 对 4- 动量第零分量的积分会给出两类极点: (i) 在 $\sim Q$ 附近的一般极点, 这类极点对应外腿的 3-动量以及最低阶激发态的质量; (ii) 在 $\sim Q^{2}/2m_{N}$ 对应初始能量的极点.
+\par
+最多包含一个重粒子线的过程当然是最简单的情形, 这时我们的积分曲线可以绕开第二类极点. 从而每一个 4-动量的积分都会给出一个 $Q^{4}$ 的因子. 而一个核子的传播子则会因为拉氏量动能项中的第一项带一个 $Q^{-1}$, 其余项均当作修正来处理: 核子在时间变化时可以看做是一个静止的源在传播, 这也可以从其传播子的 Fourier 变换 $\theta(t)\delta^{3}(\vec{r})$ 中很容易地看出来. 如果 $Q$ 达到一定程度, 那么 $\pi$ 与 $\Delta$ 都会产生, 一个 $\pi$ 介子的传播子带 $Q^{-2}$ 而 $\Delta$ 传播子带 $Q^{-1}$.
+\par
+存在不止一个重粒子的反应则显得复杂许多, 考虑两个重粒子的散射, 它们的质心动量为 $\vec{p}$ 而总能量为 $E=k^{2}/m+\cdots$. 忽略掉较弱的相对论性修正, 通过计算可得传播子的积分为
+\begin{align}
+\int\frac{dl^{0}}{2\pi}\frac{1}{l^{0}+\frac{E}{2}-\frac{(\vec{l}+\vec{p})^{2}}{2m_{N}}+i\epsilon}
+\frac{1}{-l^{0}+\frac{E}{2}-\frac{(\vec{l}+\vec{p})^{2}}{2m_{N}}+i\epsilon}
+\end{align}
+这个结果最大的问题就在于它是红外发散的, 因为它会从第二类极点处得到一个很大的留数. 这实际上是一个很常见的现象: 这样的发散与 $M/Q$ 同阶, 只要有两个以上的有着与 $M$ 同阶的质量但动量却只有 $Q$ 这个量级的粒子发生碰撞便会有这样的结果. 由于第二类极点的影响, 4-动量积分实际上会给出 $Q^{5}$ 的因子. 而核子传播子给出 $Q^{-2}$. $\pi$ 介子传播子给出 $Q^{-2}$, 但在实际处理中我们可以将 $\pi$ 当作背景场作为``势能'' $\pi$ 介子存在, 可以认为保持静止.
+\par
+对能量进行积分后, 微扰场给出的图会带有各种项, 在对这些图取时间排序后, 相当于让圈的贡献完全由 3-动量积分以及在分母的初末能量差决定. 而不可约的图则是不能被分为更低阶的图的, 它们不存在中间态. 只与初末粒子相关, 而相应的这些图不会给出包含能量差的 $O(Q^{2}/m_{N})$ 项, 反之, 对于可约图, 都会在分母处对 $Q$ 的幂给出上述贡献.
+\par
+在重粒子系统中, 我们把不可约图的求和当做势能 $V$. 注意到势能实际上就相当于一堆子图的集合, 我们可以通过别的方式在消除红外发散的情况下来定义它们. 我们可以发现在整套理论中在势能内部真正出现的尺度就是 $Q$, 从而可以在有一个重粒子的系统的基础上在 $Q$ 以上对幂次继续求和.
+\par
+可约图实际上可以表示为不可约图的组合. 那么完整的振幅 $T$ 就是势能与其相互作用的求和, 用 $G_{0}$ 表示仅包含初末粒子的中间态,
+\begin{align}
+T=-(V+VG_{0}V+VG_{0}VG_{0}V+\cdots)=-V+VG_{0}T.
+\end{align}
+这便是 Lippmann-Schwinger 方程\upcite{21}, 它在形式上等价于具有势能 $V$ 的 Sch\"{o}dinger 方程. 考虑两个核子的反应情形, 它们的传播子可以由非相对论性的 Green 函数表示
+\begin{align}
+G_{0}(l;k)=-\frac{m}{l^{2}-k^{2}-i\epsilon},\quad G_{0}(r;k)=-m\frac{e^{ikr}}{4\pi r}.
+\end{align}
+再展开相对论修正, 在图上对应的是两腿的顶点
+\begin{align}
+u(l;k)=-\frac{l^{4}-k^{4}}{8m^{3}}+\cdots,
+\end{align}
+它可以写入势能中.
+\par
+有了这些定义之后, 任意图的振幅对 $Q$ 的贡献可以记为
+\begin{align}
+T\propto Q^{\nu}\mathcal{F}(Q/\Lambda),
+\end{align}
+这里 $\Lambda$ 为重整化的尺度, $\nu$ 为求和之后的幂指数. $\nu$ 与图中各项元素的关系正是我们感兴趣的. 此外, 电磁相互作用可以被当作以 $\alpha=e^{2}/4\pi$ 为指数的微扰展开. 接下来我们具体的谈谈如何操作给出幂指数和.
+\par
+光靠 $Q$ 的幂指数和对相互作用排序是不够的, 我们还需要找到一些伴随着 $Q$ 的其他尺度. 我们已经知道在 QCD 中有三个物理尺度: 手性破缺尺度 $\mathcal{N}$, 核子质量尺度 $M_{nuc}$ 与 QCD 特征尺度 $M_{QCD}$. 手性破缺尺度对应最大的比例系数 $Q/\mathcal{N}$. 根据量纲分析, 我们希望在 $Q\ll\mathcal{N}$ 时的自由核子散射振幅可以由 $Q/\mathcal{N}$ 作微扰展开. 这在 $Q$ 很小的时候也是显然能够成立的. 而当 $Q$ 不断增大时, 我们则必须考虑重求和: 首先对所有 $Q/\mathcal{N}$ 的各项级数求和但只对 $Q/M_{nuc}$ 作展开; 然后再对 $Q/M_{nuc}$ 的各项求和但对 $Q/M_{QCD}$ 作展开, 以此类推. 这样求和到一定阶数的图时, 就可以将基态给出.
+\par
+由于对 QCD 我们仍然无法对其过程给出严格的解释, 但显然有效场论中的相关参数必须要求一些假设才能使理论自洽且具有可预测性. 一条基本的假设则是自然性假设\upcite{50}. 自然性的意思就是对每一个维数为 $\delta_{i}$ 的算符 $\mathcal{O}_{i}$, 参数 $g_{i}(\Lambda)$ 都会具有如同 $c_{i}(\Lambda/M)M^{\delta_{i}}$ 的形式, 一般定义 $c_{i}(1)=O(1)$. 自然性对于场算符一般都成立除非拉氏量中有某种对称性要求 $c_{i}$ 必须是一个非常小的数 (比如我们所关心的 $\bar{\theta}$). 尽管并不严格, 但这是我们从核唯象学中得到的量化的重要性质, 而且它比一般的模型假设的限制要更少些. 它不仅保证了有效理论中的参数与现有能标自洽, 同时还能针对一些可能的现象进行预言, 如果我们发现某个参数比一开始假设的要大很多, 那么有效场论便可以依据相关的效应更好的得到完善.
+\subsection{小结}
+有效场论之所以有效, 依照之前的讨论, 主要来源于三点:
+\par
+(i) 系统性. 只要能够建立数幂规则, 就可以对一些 $\propto Q$ 的小参数作展开.
+\par
+(ii) 与 QCD 自洽. 在有效理论的构建中 QCD 赋予的信息仅有夸克禁闭, 相关对称性以及自然性, 但这也是已知的 QCD 理论中最为重要的三部分. 在能够找到 QCD 严格解析的解之前, 我们可以通过有效理论来探究在低能区相关参数的现象学上下界. 而且即使在这种情形, 有效理论仍然是可以给出一些有价值的预言的, 因为参数空间总是有限维的. 它们能够做出一些与真实情形只相差一些展开阶数的预言.
+\par
+(iii) 有效场论必然也是一个自洽的量子场论. 在展开时我们同样认同重整化的条件并对参数作一些限制从而原则上它们在低能标下都是符合实验现象的.
+\subsection{手性对称破缺与自发 CP 破坏}
+在 QCD 的有效场论构建过程中 (大约在 60 年代), 依据基本的构造思路, 人们提出了各种各样的理论模型. 但由于当时人们对于强相互作用还知之甚少 (仅知道 $u$ 与 $d$ 两味夸克), 同时实验手段也远达不到 QCD 产生显著效应的 GeV 级能标, 在这种情况下, 想要挑选一个可靠的有效理论则显得极为困难. 人们根据已有的经验以及对低能区现象的一些了解甄选出了几个较为令人信服的模型, 其中包括 NJL 模型\upcite{42}\upcite{43}, Cabbibo 机制\upcite{17}以及早期的弦理论\upcite{51}. 但即使如此, 我们仍无法对稍高能标的强相互作用理论去作有效的解释. 在 1970 年, Roger Dashen 发表了一篇文章, 在这篇文章中他通过对处在一些特定对称条件下的简并真空态的研究发现了强相互作用中手性对称破缺的一些悖论问题, 并从这个悖论出发深刻地解释了悖论后所掩藏的物理内涵. 他指出, 如果强相互作用主导的过程中存在自发的手性破缺即 \textbf{CP} 破坏时, 将出现非零值的手性凝聚态. 而在后来一些人的工作\upcite{40}\upcite{52}中发现这种非零的手性凝聚态实际上就是 $\eta$ 介子态. 我们之前在概述中曾提到过, 自发的强相互作用 \textbf{CP} 破坏实际上可以被手征对称性的自发破缺来解释, 这也是现在认为除 Higgs 耦合以外赋予了夸克质量的来源. 尽管直至今日 Dashen 所预言的现象仍在人类所观测到的能标之上, 但他的工作为 QCD 理论模型的构建奠定了坚实的基础. Dashen 首次通过已有的模型给出了可能被实验所预见的可证伪现象, 也为人们选择有效理论提供了有效的手段 (即如果某种理论能够计算出同样的效应, 在大概率上它是一个合理的理论, 至少是可证伪的科学理论). 在 Dashen 之后人们便发现了夸克禁闭效应, 而相应的渐进自由理论\upcite{53} 为低能区 QCD 理论模型的完成划上了较为圆满的句号. 同时更有意义的事情在于, 虽然 Dashen 的预言在现象学上来说并不成功, 但他的工作为我们理解强 \textbf{CP} 破坏现象作出了非常大的贡献, 使得曾困扰了人们数十年的强 \textbf{CP} 破坏问题能够被唯象的讨论从而进一步完成相应的实验并进行验证. 这里我们将简略的阐述 Dashen 工作的思路, 着重说明为什么说一旦存在强 CP 破坏便会有 $\eta$ 介子产生. 这也是我们之后工作的重要基础.
+\subsubsection{悖论}
+考虑一个强相互作用中的哈密顿量
+\begin{align}
+H=H_{0}+\epsilon H',
+\end{align}
+这里 $H_{0}$ 是满足 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 规范对称的, 而 $H'$ 相当于微扰的哈密顿量, 但这里我们是对对称性作“微扰”, $H'$ 是在其他的特定对称性下产生的“微扰”, 这种特定的对称性可以是手征对称也可以单纯的是 $\textrm{SU}(3)$ 的修正. 这里我们考虑各种组合都有可能.
+\par
+在 $\epsilon=0$ 的极限下, 八个赝标量介子将会退化为无质量的 Goldstone 玻色子. 质量谱可写为
+\begin{align}
+m_{\alpha}^{2}=\langle\textbf{P}_{\alpha}|\epsilon\mathcal{H}'(0)|\textbf{P}_{\alpha}\rangle+O(\epsilon^{2}),
+\end{align}
+$\alpha=1,\cdots,8$ 表示各个介子, $\mathcal{H}'$ 为 $H'$ 的密度, $|\textbf{P}\rangle$ 则是协变的归一化量子态, $\langle\textbf{P}|\textbf{P}'\rangle=2P_{0}\delta^{3}(\textbf{P-P'})$. 这时便会有悖论出现, 由上式可见 $m_{\alpha}^{2}$ 项必然是非负的, 但我们并没有任何机制来保护等号右侧的矩阵元不能为负. 或者可以换个方式提问, 介子质量谱的正定性是否会对 $\mathcal{H}'$ 产生一些限制呢? 答案自然是肯定的.
+\par
+实际上早在这之前已经有人发现了类似的佯谬\upcite{54}\upcite{55}, 他们发现包含有某种对称破缺的 $\mathcal{H}'$ 可以服从 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 规范变换从而产生一个新的 $\mathcal{H}'$, 这个新的 $\mathcal{H}'$ 所描述的物理与之前很不一样, 但问题在于按照 $\textrm{SU}(3)$ 对称性的表述, 仅对 $\mathcal{H}'$ 做一个 $\textrm{SU}(3)$ 旋转是不可能产生任何新的物理的, 也就是说关于 $\mathcal{H}'$ 的定义内部一定还有某些不明确的地方.
+\par
+产生上述悖论的原因其实就在于即使在 $\epsilon\rightarrow0$ 的极限下, 真空态也未必是 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 的单重态. 实际上, 对于 $H_{0}$ 我们可以有连续的真空, 但完整的哈密顿量却有着一个特别的真空态. 当 $\epsilon$ 趋近于 0 时, 这个特别的物理真空会变为对称极限下简并的众多真空态中的某一个. 正因如此, $\mathcal{H}'$ 不仅取决于对称性如何发生破缺, 同时也与 $H_{0}$ 的连续真空态中到底是哪一个对应的真实的物理态有关. 我们知道 $\textrm{SU}(3)$ 实际上是 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 在 $\epsilon\rightarrow0$ 极限时产生的单重真空态中的一个子群, 从而 $\textrm{SU}(3)$ 可以用来为真空中的粒子态进行分类. 而由于 $\mathcal{H}'$ 决定了 $H_{0}$ 的你一个真空态与其相关, $\textrm{SU}(3)$ 便不再与 $\mathcal{H}'$ 无关. 所以, 如果我们在 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 空间中选取某个坐标系, 该坐标系以 $\textrm{SU}(3)$ 为基, 那么 $\mathcal{H}'$ 在这个坐标系统中显然不能随意的变换. 这就是为什么介子的质量谱能够禁止关于 $\mathcal{H}'$ 的负矩阵元的原因.
+\subsection{$\textrm{SU}(3)\otimes \textrm{SU}(3)$ 与 CP 破坏}
+\subsubsection{假设与约定}
+我们对接下来要做的讨论作一些适当的假设. 矢量流的守恒荷可以表示为
+\begin{align}
+Q_{a}&=\int\,d^{3}xj_{a^{0}}(\vec{x},0), \n\\
+Q_{a}^{5}&=\int\,d^{3}xA_{a^{0}}(\vec{x},0),\quad a=1,2,\cdots,8
+\end{align}
+其中 $j_{a^{\mu}}$ 与 $A_{a^{\mu}}$ 分别为矢量流与轴矢量流, 它们的时间分量满足 Gell-Mann 的 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 对易关系.
+\par
+若使强相互作用哈密顿量破缺至 $H_{0}+\epsilon H'$, 这样的设定中我们其实已经暗含了一个假设. 即 $\epsilon H'$ 是足够小以至于 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 对称群中仅包含 $H_{0}$ 项, 且这一项与真实的强相互作用是具有一定相似性的. 那么自然会有一个问题, 那便是这样的对称群到底是以何种方式变化才能够满足上述假设. 这里仍然定义 $|0\rangle$ 为 $H_{0}+\epsilon H'$ 在 $\epsilon\rightarrow0$ 极限下的真空态, 更深刻地可以考虑为能使得 $|0\rangle$ 保持不变的群必定是 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 空间中的某些 $\textrm{SU}(3)$ 子群. 而具体是哪一个 $\textrm{SU}(3)$ 子群则取决于哪一个子群与 $\epsilon H'$ 的内禀属性相关, 这也是我们之解释过的有关悖论的问题. 这里我们不做赘述, 但这样的假设导致了类似 $\textrm{SU}(3)$ 粒子多重态构造而成的空间以及近似地具有部分手性对称的 $\pi$, $K$ 与 $\eta$ 介子态.
+\par
+而通过对 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 空间中坐标的适当选取, 我们总能够找到由矢量荷生成的不改变 $|0\rangle$ 的 $\textrm{SU}(3)$ 群. 即
+\begin{align}
+Q_{a}|0\rangle=0,\quad a=1,2,\cdots,8
+\end{align}
+有了上述约定后, $\epsilon H'$ 便不再是随意选取的了, 它的性质应服从由 $Q_{1}$, $Q_{2}$, $\cdots$, $Q_{8}$ 生成的 $\textrm{SU}(3)$ 群的性质. 而八种赝标量介子 $\pi$, $K$ 以及 $\eta$ 在 $\epsilon=0$ 时退化为无质量 Goldstone 玻色子. 矩阵元满足
+\begin{align}
+\langle\pi(q)|A_{\pi^{\mu}}(0)|0\rangle&=-\frac{q^{\mu}}{2f_{\pi}}, \n\\
+\langle K(q)|A_{K^{\mu}}(0)|0\rangle&=-\frac{q^{\mu}}{2f_{K}}, \n\\
+\langle\eta(q)|A_{\eta^{\mu}}(0)|0\rangle&=-\frac{q^{\mu}}{2f_{\eta}}.
+\end{align}
+$\epsilon$ 趋近于 0 时, $f_{\pi}$, $f_{K}$, $f_{\eta}$ 将渐进地趋于同一值 $f$.
+\subsubsection{$(\textbf{3},\bar{\textbf{3}})\oplus(\bar{\textbf{3}},\textbf{3})$ 对称破缺}
+在 Dashen 之前, Gell-Man[56]以及 Weinberg[57] 等人一经发现 $\mathcal{H}'$ 服从 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 中 $(\textbf{3},\bar{\textbf{{3}}})\oplus(\bar{\textbf{{3}}},\textbf{3})$ 表示. 在接下来的讨论中, 我们以此为基础假定
+\par
+(i) $\mathcal{H}'$ 属于 $(\textbf{3},\bar{\textbf{{3}}})\oplus(\bar{\textbf{{3}}},\textbf{3})$,
+\par
+(ii) $\mathcal{H}'$ 在 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 的能生成同位旋的 $\textrm{SU}(2)$ 子群中是不变的,
+\par
+(iii) $\mathcal{H}'$ 在 $CP$ 或是一些包含一般的 $CP$ 变换操作的 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 变换下是不变的.
+\par
+那么可以证明 $\epsilon\mathcal{H}'$ 总能写成如下两种形式中的一种
+\begin{align}
+\label{equa 1}
+\epsilon\mathcal{H}'&=U(u_{0}-\sqrt{2}u_{8}+2\delta u_{0}+\sqrt{2}\delta u_{8})U^{-1},\quad0\leq\delta, \\
+\label{equa 2}
+\epsilon\mathcal{H}'&=-U(u_{0}-\sqrt{2}u_{8}+2\delta u_{0}+\sqrt{2}\delta u_{8})U^{-1},\quad0\leq\delta
+\end{align}
+$U$ 是某些 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 变换, $u_{i}$ 为表示 $(\textbf{3},\bar{\textbf{{3}}})\oplus(\bar{\textbf{{3}}},\textbf{3})$ 的元素, 它是一般 $\textrm{SU}(3)$ 群中十重态的第 $i$ 个分量. $\delta$ 为某个参数, 它可以被假定为正因为 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 变换群中包含 $\delta\rightarrow-\delta$ 的变换. 然后我们希望确定两式中的 $U$. 首先介绍一个定理, 这个定理在 Dashen 的原始文献中有证明: 如果 $|0\rangle$ 为 $H_{0}$ 的真空即满足 $H_{0}|0\rangle=0$, 且这是在 $\epsilon\rightarrow0$ 下 $H_{0}+\epsilon H'$ 真空的极限, $(H_{0}+\epsilon H')|vac\rangle=0$. 那么 $\langle0|e^{i\omega\cdot Q}\epsilon\mathcal{H}'e^{-i\omega\cdot Q}|0\rangle$ 可以被认为是某个 $\omega$ 的函数在 $\omega=0$ 处拥有的最小值. 由于这里我们考虑的就是平凡 $\textrm{SU}(3)$ 群中的 $|0\rangle$, 这条定理当然是适用的. 对于某个 $u_{i}$ (这里以 $u_{8}$ 为例), 我们有
+\begin{align}
+\epsilon\mathcal{H}'=-Uu_{8}U^{-1}.
+\end{align}
+由上述定理我们知道真空期望值 $-\langle0|VUu_{8}U^{-1}V^{-1}|0\rangle$ 可以被认为是任意 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 变换 $V$ 的函数且当 $V$ 为恒等变换时上式有最小值. 将 $V$ 与 $U$ 合并为一个变换 $W$, 上述结论可等价的表述为 $-\langle0|Wu_{8}W^{-1}|0\rangle$ 在 $W=U$ 时取最小值. 为了方便我们这里不用 $e^{i\omega Q}$ 来显式地表示 $W$ 而用两个 $3\times3$ 的幺正矩阵 $\alpha$ 和 $\beta$ 来表示. $\alpha$ 与 $\beta$ 都是 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 中的表示定义. 记 $W(\alpha,\beta)$ 为拥有矩阵表示 $\alpha$, $\beta$. $W(\alpha,\alpha^{-1})$ 即纯 $\textrm{SU}(3)$ 旋转. 对于 $u_{8}$,
+\begin{align}
+W(\alpha,\beta)u_{8}W^{-1}(\alpha,\beta)=d_{80}(\alpha,\beta)u_{0}+[(\textbf{3},\bar{\textbf{{3}}})\oplus(\bar{\textbf{{3}}},\textbf{3})\ \textrm{中的其他元素}],
+\end{align}
+这里
+\begin{align}
+d_{80}(\alpha,\beta)=\frac{1}{\sqrt{6}}\Re{tr(\alpha\lambda_{8}\beta)},
+\end{align}
+注意 $u_{0}$ 是唯一一个在 $(\textbf{3},\bar{\textbf{{3}}})\otimes(\bar{\textbf{{3}}},\textbf{3})$ 表示中能在 $|0\rangle$ 上产生期望值的元素. 从而
+\begin{align}
+-\langle0|W(\alpha,\beta)u_{8}W^{-1}(\alpha,\beta)|0\rangle=-\frac{1}{\sqrt{6}}\Re{tr(\beta\alpha\lambda_{8})\langle0|u_{0}|0\rangle}.
+\end{align}
+显然为了找到最小值, 我们需令 $\langle0|u_{0}|0\rangle<0$. 之后的工作则是找到求迹项的极值即可.
+\par
+再回到我们所讨论的具体函数上来, 依照同样的方式可以写出
+\begin{align}
+\langle0|W(\alpha,\beta)(u_{0}-\sqrt{2}u_{8}+2\delta u_{0}+\sqrt{2}\delta u_{8})W^{-1}(\alpha,\beta)|0\rangle=\Re{tr(\alpha\beta M)}\langle0|u_{0}|0\rangle,
+\end{align}
+这里对应内积项的表示矩阵 $M$ 为
+\begin{align}
+M=
+\left(
+\begin{array}{ccc}
+\delta & 0 & 0 \\
+0 & \delta & 0 \\
+0 & 0 & 1
+\end{array}
+\right).
+\end{align}
+如果取 (\ref{equa 1}), 考虑到 $\langle0|u_{0}|0\rangle<0$, $U$ 与 $W(\alpha,\beta)$ 在 $\Re{tr(\alpha\beta M)}$ 取最大值时相等. 而如果取 (\ref{equa 2}), 则我们需要找到 $\Re{tr(\alpha\beta M)}$ 的最小值. 这里不加证明的给出, 该项的最大值存在于当 $\alpha\beta$ 为单位矩阵时的情形. 从而我们可以不失一般性的将 $U$ 当作恒等变换. 从而,
+\begin{align}
+\label{equa 4}
+\epsilon\mathcal{H}'=u_{0}-\sqrt{2}u_{8}+2\delta u_{0}+\sqrt{2}\delta u_{8},\quad0\leq\delta.
+\end{align}
+找到最小值则稍微麻烦一些, 这里仍然不假证明的给出结果. 如果 $\delta\leq2$, 最小值取在
+\begin{align}
+&\alpha\beta= \n\\
+&\left(
+\begin{array}{ccc}
+-\frac{1}{2}\delta\pm i(1-\frac{1}{4}\delta^{2})^{1/2} & 0 & 0 \\
+0 & -\frac{1}{2}\delta\pm i(1-\frac{1}{4}\delta^{2})^{1/2} & 0 \\
+0 & 0 & -1+\frac{1}{2}\delta^{2}\pm i\delta(1-\frac{1}{4}\delta^{2})^{1/2}
+\end{array}
+\right),
+\end{align}
+的情形, 而如果 $\delta\geq2$ 则取在
+\begin{align}
+\left(
+\begin{array}{ccc}
+-1 & 0 & 0 \\
+0 & -1 & 0 \\
+0 & 0 & 1
+\end{array}
+\right)
+\end{align}
+的情形. 从而
+\begin{align}
+\label{equa 3}
+\epsilon\mathcal{H}'&=(1+\frac{1}{2}\delta^{2})u_{0}-\sqrt{2}(1-\delta^{2})u_{8}\pm3\delta(1-\frac{1}{4}\delta^{2})^{1/2}v_{0},\quad0\leq\delta\leq2, \\
+\epsilon\mathcal{H}'&=-u_{0}+\sqrt{2}u_{8}+2\delta u_{0}+\sqrt{2}\delta u_{8},\quad2\leq\delta,
+\end{align}
+$v_{0}$ 为 $(\textbf{3},\bar{\textbf{{3}}})\oplus(\bar{\textbf{{3}}},\textbf{3}))$ 中的一个 $\textrm{SU}(3)$ 奇宇称单态. 这样我们得到的三种对称破缺的哈密顿量便是所有可能的在一般 $\textrm{SU}(3)$ 群中能够保持 $|0\rangle$ 不变的哈密顿量. 但值得注意的是对于第二种 $0\leq\delta\leq2$ 的情形, 我们发现它会使 $CP$ 对称性发生破坏, 这也是我们这部分讨论的重点.
+\subsubsection{自发 CP 破坏}
+由上可知, (\ref{equa 3}) 表示的哈密顿量会产生 $CP$ 对称性的破坏. 初看起来这是非常令人惊讶的事实因为我们似乎早已在最初的假设 (iii) 之中预防了 \textbf{CP} 破坏的产生. 会产生这样的问题原因在于虽然哈密顿量在一般的 $CP$ 算符作用下发生了破缺, 但在变换 $UCPU^{-1}$ 下体系仍是保持不变的. 可是 $UCPU^{-1}$ 并不能直接对 $|0\rangle$ 进行作用从而使得理论得到的哈密顿量会产生 \textbf{CP} 破缺. 而且这是一个不能被“旋转”掉的 \textbf{CP} 破缺, 因为哈密顿量已经有一部分手征的破坏了, 即便对其作 $\textrm{SU}(3)$ 下的旋转变换, 破坏项也会在原来未发生破缺的那部分产生.
+\par
+此外, $v_{0}$ 前的 $\pm$ 符号意味着在这种情形下 $\epsilon\mathcal{H}'$ 可能的解有两种, 这两种描述的是同一点的 \textbf{CP} 破坏但互相之间相差一个 CP 变换.
+\par
+在 (\ref{equa 3}) 中, \textbf{CP} 破坏的量级与 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 破坏的量级同阶 ($\sim10^{8}$ GeV), 在当时这个能标是人类的实验技术远无法达到的, 即便是今天这对人类来说仍然是一个极高的能标, 故我们并不能在实验上有效的观测到上述 \textbf{CP} 破坏的存在. 但这项工作的结果已经显然的告诉了我们, 自发 \textbf{CP} 破坏是确实可以发生的, 并且在一定条件下我们甚至可以预测什么时候这样的破坏现象能够发生. 我们仅需考虑一个 (\ref{equa 2}) 类型的哈密顿量并使 $\delta<2$, \textbf{CP} 破坏便会自然地产生.
+\subsubsection{Mathur 与 Okubo 之域}
+在上述内容中我们已经很清楚的知道, 自发 \textbf{CP} 破坏是可以存在于强相互作用中的. 但有关实验现象的问题我们看似还很无力, 这一部分 Dashen 从 Mathur 与 Okubo 的工作出发, 另辟蹊径地从理论上说明了对于满足 (\ref{equa 3}) 的 $\epsilon\mathcal{H}'$, 其 $\eta\rightarrow2\pi$ 的衰变振幅在 $\epsilon$ 阶具有非零值. 这也是 Dashen 这篇文章中最为重要的结果. 对此的具体计算我们将不在这里赘述, 这里只对基本思路进行简单的介绍.
+\par
+在 Mathur 与 Okubo 1970 年的工作中\upcite{55}, 他们指出在 $\epsilon\mathcal{H}'$ 中参数 $\langle vac|u_{0}|vac\rangle$, $\langle vac|u_{8}|vac\rangle$ 以及 $\sqrt{2}a=u_{8}/u_{0}$ 是不能随意取值而是存在一定限制的. 虽然在他们的工作中使用的是 $\textrm{U}(3)\otimes \textrm{U}(3)$ 而非 $\textrm{SU}(3)\otimes \textrm{SU}(3)$, 但只要满足某些条件, 我们就可以认同他们的结果, 这里不加证明的给出这个条件: 令 $|vac\rangle$ 为 $H=H_{0}+\epsilon H'$ 的真空态, 那么真空期望值 $\langle vac|e^{i\omega\cdot Q}\epsilon\mathcal{H}'(0)e^{-i\omega\cdot Q}|vac\rangle$ 可以认为是 $\omega$ 的函数在 $\omega=0$ 处取的最小值. 如果 $\epsilon\mathcal{H}'$ 属于 $(\textbf{3},\bar{\textbf{{3}}})\oplus(\bar{\textbf{{3}}},\textbf{3})$, 那么 $\langle vac|W(\alpha,\beta)\epsilon\mathcal{H}'W^{-1}(\alpha,\beta)|vac\rangle$ 可以由 $\langle vac|u_{0}|vac\rangle$ 及 $\langle vac|u_{8}|vac\rangle$ 与参数 $a$ 表示. 由前述知, 当 $W$ 为恒等变换时这个量要求必须是最小值, 从而会存在 Mathur 与 Okubo 所言的限制. 这里我们只考虑 $\epsilon$ 比较小的情形, 从而上述条件正是之前我们阐述过的有关真空态 $|0\rangle$ 的定理且 $\langle vac|u_{8}|vac\rangle$ 可以当作零值. 除此之外仍利用之前相应的结论比如 $\langle0|u_{0}|0\rangle<0$ 可以得到
+\begin{align}
+-1\leq a\leq1,
+\end{align}
+这便是 $a$ 的限制条件. 将这个条件代回 (\ref{equa 3}), (\ref{equa 4}) 中整个物理图景便会变得非常清晰. 对于 (\ref{equa 4}), 可以得到 $a=(\delta-1)/(1+2\delta)$ 及  $0\leq\delta$, 而对于 (\ref{equa 3}) 若 $\delta\geq2$ 则 $a$ 为 $(1+\delta)/(2\delta-1)$. 且上述两种情形将在 $a=1/2$ 或 $\delta=\infty$ 处光滑的重合. $\delta$ 并不是一个真正的奇异点, 它只是人为选取的参数, 故不会对哈密顿量产生任何奇怪的影响, 但如果在 $a$ 所允许的范围外选取 $a$ 值比如 $a=-1$, 则哈密顿量将演化为 \textbf{CP} 破缺的情形 ($\delta$ 会变为一个很小的正值), 这也是合理的因为这时 (\ref{equa 3}) 与 (\ref{equa 4}) 将会重合于 $\delta=0$. 而如果取 $a=1$ 则会在 $\delta$ 略小于 2 时出现 \textbf{CP} 破缺项.
+\par
+注意到 $a$ 本身只是一个参数, 理论上它可以从 $-\infty$ 到 $\infty$ 随意取值. 然而如果 $|a|>1$, 为了让 Mathur 的结论能够使用, 我们必须作一个 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 旋转使得真空态能够对应上, 而这个旋转又会自然地产生 \textbf{CP} 破缺的哈密顿量. 由于 $a$ 并不是 $\textrm{SU}(3)\otimes \textrm{SU}(3)$ 不变的参数, 变换为 \textbf{CP} 破缺的哈密顿量之后它便不再重要了.
+\par
+更物理一些来说, $a=\pm1$ 正是会产生奇异性的边界. 如果代入最初的质量谱中, $m_{\pi}^{2}$ 会在 $a=-1$ 处为零而 $m_{\eta}^{2}$ 则会在 $a=1$ 处变为零. 在 $a=-1$ 处的 $m_{\pi}^{2}$ 零值来源于轴矢流散度 $\p_{\mu}A_{a^{\mu}}$ 对于 $a=1,2,3$ 的值为零且此时具有 $\textrm{SU}(2)\otimes \textrm{SU}(2)$ 对称性. 然而 $m_{\eta}^{2}$ 在 $a=+1$ 处为零则完全是偶然的, 因为 $\p_{\mu}A_{8^{\mu}}$ 在 $a=+1$ 处是非零的, 即 $m_{\eta}^{2}$ 仅对 $\epsilon$ 的一阶项给出零值, 而如果考虑到 $\epsilon^{2}$ 阶, 则 $m_{\eta}^{2}$ 便会给出非零的结果. 这正是我们所期望的. 而在后来的工作中, 亦有许多支持此项结论的模型\upcite{56}\upcite{57}, Dashen 能够给出非零 $\eta$ 谱的结果在现今的各种 QCD 理论中都能够得到自洽的支持, 并且深层次的讨论也相信在这一点的自发 \textbf{CP} 破缺的两种不同破缺正是凝聚态中二级相变的表现\upcite{40}\upcite{58}. 本文将着重于 $\theta=\pi$ 时的自发 \textbf{CP} 破坏对 Dashen 的经典结论进行重现并说明其中与 $\bar{\theta}$ 的可能关系.
+%==========================================================================%
+
+\section{Vafa-Witten 定理}
+这部分我们用一些篇幅来介绍一个在 QCD 理论中与自发对称性破缺密切相关的定理 -- Vafa-Witten 定理. 1983 年, Weingarten\upcite{59}讨论了 QCD 中自发破缺的对称性可能会引起的理论现象, 证明了夸克的相互作用过程中手征对称性必然会发生自发破缺. 而在 1984 年, Vafa 与 Witten 利用相似的思路在他们的文章中指出, 与手征对称性相反, 在任意保持宇称不变的类矢量 (如费米子及规范玻色子) 构造的理论中 (即 QCD 理论), 宇称在 $\theta=0$ 时一定不会发生自发破缺 ($\theta=0$ 为原文中的基本假设, 稍后我们会详细解释为什么是 $\theta=0$ 以及 $\theta$ 应如何看待).
+\par
+在 QCD 理论中, $P$ 变换以 $(A_{0}(\vec{x},t),A_{i}(\vec{x},t))\rightarrow(A_{0}(-\vec{x},t),-A_{i}(-\vec{x},t))$ 的形式变换. 需要证明不会产生自发的宇称破缺即证明对于某个 $\textbf{P}$ 破缺的厄米可观测量 $X$, 其在 QCD 中的真空期望值为零. 对于完全由玻色子构成的局域算符 $X$, 这个结论就是很显然的. 由于 $\epsilon^{\mu\nu\alpha\beta}tr{F_{\mu\nu}F_{\alpha\beta}}$, $\epsilon^{\mu\nu\alpha\beta}tr{D_{\sigma}F_{\mu\nu}D_{\sigma}F_{\alpha\beta}}$, $(\epsilon^{\mu\nu\alpha\beta}tr{F_{\mu\nu}F_{\alpha\beta}})^{3}$ 等多项组合, 可以存在无穷多个 $\textbf{P}$ 破缺的算符. 而当 $\textbf{P}$ 自发破坏时, 显然不太可能所有这些算符都能够有为零的真空期望值. 但这里我们的重点在于夸克之间即包含费米场的 $X$ 所具有的效应.
+\par
+假设 QCD 的一条自洽的拉氏量为 $\mathcal{L}$, 相应的有一条广义拉氏量 $\mathcal{L}(\lambda)=\mathcal{L}-\lambda X$. 对于实的 $\lambda$, 因为 $X$ 假设为厄米的, $\mathcal{L}$ 必然也是厄米的. 令 $E(\lambda)$ 为广义拉氏量的真空能. 到 $\lambda$ 的最低阶有
+\begin{align}
+E(\lambda)=E(0)+\lambda\langle X\rangle,
+\end{align}
+其中 $\langle X\rangle$ 为 $\lambda=0$ 时 $X$ 的真空期望值. 如果 $\langle X\rangle\neq0$, 由于它是一个奇宇称态, 无论 $\lambda$ 是正是负, 我们都可以任意选取 $\langle X\rangle$ 的符号使得 $\lambda\langle X\rangle$ 总为负. 这样的话就会使得 $E(\lambda)<E(0)$ 在 $\langle X\rangle\neq0$ 时总成立. 而 $E(0)$ 是最低阶的能态, 不应存在某个 $E(\lambda)$ 比起更低. 从这一步的分析我们可以看出 $X$ 的期望值的确应当是零 (或者至少不是奇宇称态), 但为了避免上述的悖论, 我们需要对 $E(\lambda)$ 的 Euclid 路径积分测度作一些解释.
+\par
+我们首先讨论 $\textbf{P}$ 破缺的算符在 Wick 转动下是如何演化的. 厄米的 $X$ 在 Minkowski 空间中自然是实的, 而为了满足 Lorentz 不变性, $X$ 需要由规范场 $A_{\mu}^{a}$, 度规张量 $g_{\mu\nu}$ 以及反对称张量 $\epsilon_{\mu\nu\alpha\beta}$ 来构造. $A_{\mu}^{a}$ 与 $g_{\mu\nu}$ 在 Euclid 空间中当然是实的但 $\epsilon_{\mu\nu\alpha\beta}$ 在 Wick 转动下由于反对称会给出一个 $i$ 的因子. $X$ 又必须与 $\epsilon_{\mu\nu\alpha\beta}$ 奇数阶成正比, 从而 $X$ 在 Wick 转动下亦会出现 $i$ 的因子.
+\par
+在 Euclid 体积 $V$ 中, 基态能量的路径积分为
+\begin{align}
+e^{-VE(\lambda)}=\int\,dA_{\mu}^{a}d\psi d\bar{\psi}\exp{[-\int\,d^{4}x(\mathcal{L}+i\lambda X)]},
+\end{align}
+若将费米场积掉, 得到
+\begin{align}
+e^{-VE(\lambda)}=\int\,dA_{\mu}^{a}\det{(\slashed{D}+M)}\exp{[-\frac{1}{4g^{2}}
+\int\,d^{4}xtr{F_{\mu\nu}F^{\mu\nu}}]}\exp{(i\lambda\int\,d^{4}x X)},
+\end{align}
+$M$ 为费米子质量矩阵. 在 QCD 中, $\det{(\slashed{D}+M)}$ 总是正的\upcite{60}, 故上述积分值的正负完全取决于相因子 $\exp{(i\lambda\int\,d^{4}x X)}$. 而一个复数的相因子只可能让积分值变得更小, 从而 $E(\lambda)$ 将会在相因子取最大值即 $\lambda=0$ 时得到最小值. 所以 $X$ 在 $\lambda=0$ 处的真空期望值必为零, 从而在 QCD 中宇称不会产生自发破缺. 如果将 $\theta$ 项也引进来可以得到,
+\begin{align}
+e^{-VE(\lambda)}&=\int\,dA_{\mu}^{a}\det{(\slashed{D}+M)}\exp{[-\frac{1}{4g^{2}}
+\int\,d^{4}xtr{F_{\mu\nu}F^{\mu\nu}}]} \n\\
+&\times\exp{\left(\frac{i\theta}{16\pi^{2}}\int\,d^{2}x\epsilon^{\mu\nu\alpha\beta}tr{(F_{\mu\nu}F_{\alpha\beta})}\right)},
+\end{align}
+依照同样的思路, $E(\lambda)$ 在 $\theta=0$ 处有最小值.
+\par
+如果 $A_{\mu}$ 当作 $3\times3$ 的反厄米矩阵, 那么时间反演变换将以如下方式演化:
+\begin{align} (A_{0}(\vec{x},t),A_{i}(\vec{x},t))\rightarrow(-A_{0}^{*}(\vec{x},-t),A_{i}^{*}(\vec{x},t)), \n
+\end{align}
+容易发现 $\textbf{T}$ 破缺的算符在 Euclid 空间中可以是实的, 从而上述的分析不适用于 $\textbf{T}$ 破缺的情况, 及我们不能利用同样的方式来判断是否存在自发的 $\textbf{T}$ 破缺. 同理, C 变换给出 $A_{\mu}(\vec{x},t)\rightarrow A_{\mu}^{*}(\vec{x},t)$, $C$- 破缺的算符在 Euclid 空间中也可能有实值, 故定理不适用. 但是对于 $CT$ 联合变换 $(A_{0}(\vec{x},t),A_{i}(\vec{x},t))\rightarrow(-A_{0}(\vec{x},t),A_{i}(\vec{x},t))$ 厄米算符在 Euclid 空间中则总是为虚数故上述定理对于 $CT$ 变换亦成立. 这也是 $CPT$ 定理的一个印证.
+\par
+最后一点需要注意的则是 Vafa-Witten 定理虽然是以 $\theta=0$ 作为基本假设, 但注意到 $\theta=\pi$ 时结果仅相差一个正负号, 当然在定理中合理的认为 Euclid 测度是保持正性的, 无需考虑 $\theta=\pi$ 的情形. 但问题在于依照 Dashen 的理论, $\theta=\pi$ 处实际上是产生了自发的宇称破缺的. 这点需要仔细考虑.
+\par
+在之前对 Dashen 工作的介绍中我们知道, 哈密顿量本身的假设保证了 $\theta=0$ 与 $\theta=\pi$ 两点在产生自发破缺前均是 \textbf{CP} 守恒的. 那么哪一个是更自然的选择呢? 在 Gell-Mann, Oakes 与 Renner 的工作中\upcite{56}他们指出当真空期望值迫使能量降低到最小值时, 赝标量粒子的质量 $\langle\bar{u}m_{u}u\rangle$, $\langle\bar{d}m_{d}d\rangle$ 以及 $\langle\bar{s}m_{s}s\rangle$ 会自然地为负值. 这可以作为选取 $\theta$ 的标准. 但如果 $\theta$ 变为 $\pi$, $\langle\bar{u}m_{u}\rangle$ 会与其他质量本征值符号相反\upcite{61}, 这会导致之前的 $\det{(\slashed{D}+m)}$ 一项不再为正从而 Euclid 空间的积分测度不再为正, 故在 Vafa-Witten 定理中选取 $\theta=0$ 是更为自然的选择. 但是反过来说, Vafa-Witten 定理并不足以限制在 $\theta=\pi$ 处的自发破缺, 尽管能量总是在 $\theta=0$ 或 $\theta=\pi$ 处取极值, 但 $\theta=\pi$ 处的物理, 尤其是本文所注重的强相互作用中的自发 CP 破坏, 仍然是值得研究并且有意义的.
+%=======================================================================%
+
+\section{Nambu Jona-Lasinio 模型}
+1961 年, 芝加哥大学的 Nambu 与 Jona-Lasinio 基于核质量来源于初始费米场的自相互作用能的观点, 在类比超导理论中能隙产生的机制启发下, 提出了描述低能标下强相互作用中物质相结构的理论, 即 Nambu-Jona-Lasinio 模型 (NJL 模型). 我们知道强相互作用无法在低能区作微扰展开, 但 NJL 模型却可以唯象地给出一些非常漂亮的结果, 也是今天人们用来处理低能情形时量子色动力学的重要模型, 其中蕴含的原理远超它所本身设想的那么简单. 他们主要利用 Hatree-Fock 平均场近似的方法, 将核子当作准粒子的激发来处理. 在考虑了包含手性 $\gamma_{5}$ 规范群的四费米子相互作用后,核子与反核子对将会自动的产生一些零质量束缚态, 这些便是理想的 $\pi$ 介子. 而既然使用了平均场近似, 这必然只能是一个低能有效理论. 并且在他们的理论中也仅对 $u$, $d$ 两味夸克进行了讨论. 为了能够让读者更好的领会到这个模型的精妙之处, 我们将首先从 BCS 理论着手进行讨论.
+\subsection{BCS 超导理论}
+BCS 理论是由 Bardeen, Cooper 以及 Schrieffer 于 1957 年提出的解释超导现象的理论\upcite{62}\upcite{63}. 在他们的理论中, 他们大胆地借用 Dirac 电子与空穴的观点, 将 Dirac 粒子当作准粒子 -- 声子的激发, 而声子作为媒介粒子同时也会与电子发生相互作用导致在 Fermi 面附近出现动量与自旋皆相反的电子对, 即 Cooper 对. 而欲使 Cooper 对破坏, 需要向电子体系施加一定的能量, 亦即我们今天所知道的能隙. 从电子体系的基态到激发态之间应当存在一定的能量宽度, 这在后来被实验所证实. 三人也因此共享了诺贝尔奖.
+\subsubsection{Dirac 的电子空穴理论}
+在费米面附近, 电子与空穴的混合满足如下方程:
+\begin{align}
+E\psi_{p+}=\epsilon_{p}\psi_{p+}+\phi\psi_{-p-}^{*}, \n\\
+E\psi_{-p-}^{*}=-\epsilon_{p}\psi_{-p-}^{*}+\phi\psi_{p+}. \n
+\end{align}
+这里 $\psi_{p+}$ 表示具有动量 $p$ 与自旋 $+$ 的电子波函数, 相应的, $\psi_{-p-}^{*}$ 即具有动量 $p$ 与自旋 $+$ 的空穴波函数, 实际的观测效应即为动量 $-p$ 与自旋 $-$. 而 $\epsilon_{p}$ 则为费米面附近粒子的动能, $\phi$ 为常数. 显然对于上述方程的复共轭同样有一组激发方程. 它们将给出能量本征谱:
+\begin{align}
+E_{p}=\pm\sqrt{(\epsilon_{p}^{2}+\phi^{2})}. \n
+\end{align}
+故两个准粒子态之间将存在 $2|E_{p}|$ 的间隔, 并且对于一个处在低能态的粒子而言, 需要一个能量阈值 $2|E_{p}|\geq2|\phi|$ 才可使其激发至高能态. 而这些结果与 Dirac 的旋量粒子理论及结果都是十分相似的. 不同的是这里能隙参数 $\phi$ 唯一的由电子本身的相互作用决定.
+\subsubsection{BCS 到 NJL 之路}
+既然在超导理论中, 存在这样由粒子间相互作用决定的参数以及由其导致的能量差, 我们可以很自然的假设旋量粒子的质量亦可由无质量的裸费米子之间的相互作用所决定. 在超导体中, 一个准粒子即描述为具有相同自旋但电荷相反的裸电子的混合, 相应的, 带质量的旋量粒子亦可视作具有相同电荷或费米数但手性相反的裸费米子的混合. 若能隙 $\phi$ 或质量 $m$ 不存在, 则相应粒子即为其电荷或手性的本征态. 在有了这样一个类比之后我们会发现, 在超导体中除了单独的准粒子激发之外, 还会存在准粒子对的集体激发. 这些激发模式与声子的激发模式类似, 在没有库仑相互作用时将填满准粒子能谱的间隙. 一般而言, 当准粒子在介质中加速运动时我们则认为它们是处于激发态的, 并且为了补偿波包中电荷量的变化, 它们同时也会起回流的作用. 因此这样的集体激发意味着单准粒子实际上并不是电荷的本征态, 集体准粒子才是. 也就是说, 如果旋量粒子实际上是为保持手征不变而近似看做准粒子的话, 它们也会存在集体激发的现象. 我们知道手征不变对应 $\gamma_{5}$ 规范群, 而在这个群对称性下我们可以证明这种集体激发的确是存在的. 而今天我们知道, 这种费米子相互作用引起的集体激发实际上就是理想 $\pi$ 介子的产生. 所以我们可以利用这样一个理论来解决核子与介子的质量问题, 它们的质量可以认为来源于一些未知的无质量费米子的初始相互作用. 显然介子中夸克的束缚态也可以由这种相互作用来解释. 虽然这里我们用初始相互作用来还原当时他们的工作, 但我们应当都很熟悉, 他们所谈论的这种所谓的初始相互作用, 就是满足 $\textrm{SU}(3)$ 规范群的强相互作用.
+\subsubsection{一些不平凡的问题}
+尽管这个类比看起来令人信服, 但作为一个有效理论若是仔细思考人们还是会发现一些问题, 当时 Nambu 与 Jona-Lasinio 提出的主要的两个问题都是关乎量子场论框架的重要问题. 第一个问题则是自经典物理时代就存在的电子自能无穷大的问题, 尽管量子场论中利用截断的方法很好的给出了许多有价值的结果并成为今日微扰量子场论计算的基石, 但在当时这仍然是一个非常困难的问题, 并且在今天我们看来, 这样生硬的截断也未必是贴近顶层的理论, 他们在当时也并未给出更深刻的解释而是沿用截断的习惯. 亦即他们的理论是不可重整的. 其二则有关 $\pi$ 介子的质量, 实际上也和 \textbf{CP} 破坏直接相关. 如果 $\pi$ 介子可以由规范群决定的类声子激发来解释, 那么它的质量应当严格为零. 针对这一问题, Nambu 与 Jona-Lasinio 提出了两种可能解释. 在超导体中, 我们观测到的集体激发由于观测过程中电磁效应引起的库伦作用会转变为等离子态, 从而具有所谓的 `` 静质量'', 既然 NJL 模型亦是通过 BCS 理论类比而来, 我们有理由相信, $\pi$ 介子是以同样的方式在我们的观测中获得了质量. 但两人自己却不怎么信服这样自然的类比解释, 而是提出了另外一种他们认为更具有前瞻性的解释. 非零的 $\pi$ 介子质量实际上意味着手性不变本就不是一个良好的对称性, 只不过程度较为微弱在他们的有效理论中可以近似看作是不变的. 这实在是一个大胆而又新颖的想法, 实际上手性破缺正是一种特殊的 $\textbf{P}$ 破坏, 他们的理论同样是弱相互作用中存在 $\textbf{CP}$ 破坏的弱预言.
+\subsection{模型的简单机制}
+这里我们简要地对 NJL 模型的机制进行阐述. 首先考虑一个一味夸克理论, 其拉氏量密度为
+\begin{align}
+\mathcal{L}&=i\bar{\psi}\slashed{\p}\psi+\frac{\lambda}{4}\left[(\bar{\psi}{\psi})^{2}-(\bar{\psi}\gamma_{5}\psi)^{2}\right] \n\\
+&=i\bar{\psi}_{L}\slashed{\p}\psi_{L}+i\bar{\psi}_{R}\slashed{\p}\psi_{R}+\lambda(\bar{\psi}_{L}\psi_{R})(\bar{\psi}_{R}\psi_{L}). \n
+\end{align}
+这里我们不考虑质量项是因为当时人们仅仅拥有夸克理论, 没有人从实验上直接或间接的观测到过夸克的存在, 而在他们的理论当中我们又知道他们倾向于认为手性对称保证夸克的裸质量应当为零, 当然在之后的处理中他们亦考虑了破缺引起质量项的情形, 必要时我们仍会将夸克质量项加入. 对这条拉氏量而言, $\lambda$ 为四费米子相互作用强度, 并且其满足全局的 $\textrm{U}_{Q}(1)\times\textrm{U}_{X}(1)$ 规范对称性. $Q$ 表示普通的电荷而 $X$ 则表示轴守恒荷. 尽管不存在裸质量项, 如同前面所提到的第二个问题, 集体激发导致的手征凝聚会引起一个有效质量项的出现, 而相应的手征对称性将会产生自发破缺, 但对电荷无影响.
+\par
+而对于 $N$ 味模型,
+\begin{align}
+\mathcal{L}=
+&=i\bar{\psi}_{a}\slashed{\p}\psi^{a}+\frac{\lambda}{4N}\left[(\bar{\psi}_{a}{\psi}^{b})(\bar{\psi}_{b}{\psi}^{a})-(\bar{\psi}_{a}\gamma_{5}\psi^{b})(\bar{\psi}_{b}\gamma_{5}\psi^{a})\right] \n\\
+&=i\bar{\psi}_{La}\slashed{\p}\psi_{L}^{a}+i\bar{\psi}_{Ra}\slashed{\p}\psi_{R}^{a}+\frac{\lambda}{N}(\bar{\psi}_{La}\psi_{R}^{b})(\bar{\psi}_{Rb}\psi_{L}^{a}). \n
+\end{align}
+这时全局规范理论为 $\textrm{SU}_{L}(N)\times\textrm{SU}_{R}(N)\times\textrm{U}_{Q}(1)\times\textrm{U}_{X}(1)$, 其中 $\textrm{SU}_{L}(N)\times\textrm{SU}_{R}(N)$ 分别描述左手味与右手味的手征对称性, 亦即左右味流之间不再存在严格的对应关系. 而 $\textrm{U}_{Q}(1)$ 则是旋量粒子守恒荷, 今天一般认为就是重子数, $\textrm{U}_{X}(1)$ 仍为轴守恒荷. 一旦产生手性凝聚, 由于凝聚态同时存在左右手性味对, 手征对称性将自发破缺至对角化的子群 $\textrm{SU}(N)$, 同时轴荷亦产生自发破缺. 而在无夸克裸质量的情况下, 自发破缺的对称性将导致一个无质量的赝标量粒子 -- $\pi$ 介子的产生.
+\subsection{实际的 NJL 模型}
+我们知道早期的 NJL 模型仍是一个纯粹的理论模型, 尽管符合当时已知的实验, 但离今天人们对于强相互作用力的认知还差得很远. 最重要的两点差别则体现在原始模型中并不考虑裸夸克质量以及其渐进自由性质引起的反常项. 现在我们将这两项加入拉氏量中进行讨论. 这里我们仅考虑两味夸克的 NJL 模型.
+\begin{align}
+\mathcal{L}&=i\bar{\psi}\slashed{\p}\psi+\bar{\psi}\gamma_{0}\mu\psi-\bar{\psi}M_{0}\psi \n\\
+&+G_{1}[(\bar{\psi}\lambda_{a}\psi)^{2}-(\bar{\psi}\lambda_{a}\gamma_{5}\psi)^{2}]+[G_{2}e^{i\theta}\textrm{det}(\bar{\psi}_{R}\psi_{L})+h.c.], \n
+\end{align}
+第一项仍与之前一致, 第二项为考虑温度不为零时引起的自激发项, $\mu=(\mu_{u},\mu_{d})$ 表示粒子的化学势. 第三项则为裸质量项, 第四项在之前的基础上做了一定的修正, 注意到仅有系数发生了一些变化, $G_{1}$ 是一个新的系数, 这里系数修正是缘于第五项色反常项的引入的系数 $G_{2}$ 与 $G_{1}$ 存在一定的关联, 一般认为 $G_{1}=G_{2}$. 而 $\lambda_{a}$ 即为之前的 $\lambda$, 不同之处是这里的 $\lambda$ 不再是一个普通的参数, 带味指标 $a=0,1,2,3$ 后, 它表示的即是规范群 $\textrm{U}(2)$ ($\textrm{U}_{Q}(1)\times\textrm{U}_{X}(1)$) 的生成元, 前述拉氏量亦可以这种方式表示. 第五项则为色动力学中的反常项, 我们又清晰地看到它与参数 $\theta$ 的直接关联. 在 NJL 模型中, 我们一般把这项称作 't Hooft 行列式相互作用\upcite{64}, h.c. 表示其厄米共轭项. 根据已有文献\upcite{39}, 若 $\theta=0$, 则低能标下仅存在 $\sigma$ 与 $\textbf{$\pi$}$ 介子场. 这里也并不考虑双夸克的相互作用. 对于 $M_{0}$ 而言, 我们总可以选取某个基底使得其对角化, 即
+\begin{align}
+M_{0}=
+\left(
+\begin{array}{cc}
+m_{u} & 0 \\
+0 & m_{d} \\
+\end{array}
+\right).
+\end{align}
+在这种情况下, 由于考虑了反常作用, 对称群为 $\textrm{SU}(3)\times\textrm{U}_{R}(2)\times\textrm{U}_{L}(2)$, 瞬子的反常作用将导致该对称性破缺至 $\textrm{SU}(3)\times\textrm{SU}_{L}(2)\times\textrm{SU}_{R}(2)\times\textrm{U}_{Q}(1)$, 这时的对称性便与之前的对称性一致了. 对于质量项, 如果我们考虑夸克质量均相同, 即 $m_{u}=m_{d}$, 对称性还原为 $\textrm{SU}(3)\times\textrm{SU}(2)\times\textrm{U}_{Q}(1)$, 而若夸克质量各不相同且其化学势亦不同, 对称性将破缺至 $\textrm{SU}(3)\times\textrm{U}_{Q}(1)\times\textrm{U}_{I}(1)$. 这里 $I$ 表示对应保持化学势对称性的同位旋守恒荷.
+\subsection{强相互作用下的 NJL 模型}
+现在我们具体阐述如何通过上述拉氏量来解决问题. 首先我们先给出一条陈述: 对于一个规范理论, 它的 Fermi 测度在手性变换下会发生改变. 我们对这条陈述做一个简单的证明. 我们在讨论 Fermi 测度时通常是在计算路径积分情况时需要, 而路径积分可由场的配分函数来表达, 量子色动力学中的配分函数为:
+\begin{align}
+Z=\int\,\mathcal{D}\psi\mathcal{D}\bar{\psi}\mathcal{D}Ae^{i\int\,d^{4}x[\mathcal{L}_{QCD}+\mathcal{L}_{\theta}]},
+\end{align}
+$\mathcal{L}_{\theta}$ 即为反常项, 由之前的论述我们知道, 在做一个手性变换后, 反常项可消去, 但由于 QCD 拉氏量中的质量项对手性变换发生改变, $\theta$ 项将出现在质量项中.
+\begin{align}
+Z=\int\,\mathcal{D}\psi'\mathcal{D}\bar{\psi'}\mathcal{D}Ae^{i\int\,d^{4}x\mathcal{L'}_{QCD}}.
+\end{align}
+尽管这两个配分函数不会因为手性变换而改变, 但 Fermi 测度改变将会导致指数项中的积分对于 $\psi$ 与 $\psi'$ 引导的路径积分变化. 定义真空期望值为 $\mathcal{O}=\mathcal{O}(\psi,\bar{\psi})$, 对于初始场与变换场分别有
+\begin{align}
+\langle\mathcal{O}_{\theta}\rangle&=\int\,\mathcal{D}\psi\mathcal{D}\bar{\psi}\mathcal{D}A\mathcal{O}(\psi,\bar{\psi})e^{i\int\,d^{4}x[\mathcal{L}_{QCD}+\mathcal{L}_{\theta}]}, \n\\
+\langle\mathcal{O'}_{\theta}\rangle&=\int\,\mathcal{D}\psi'\mathcal{D}\bar{\psi'}\mathcal{D}A\mathcal{O'}(\psi',\bar{\psi'})e^{i\int\,d^{4}x\mathcal{L'}_{QCD}}. \n
+\end{align}
+显然, $\mathcal{O}$ 与 $\mathcal{O'}$ 对于非零的 $\theta$ 是不相等的. 即
+\begin{align}
+\langle\bar{\psi}\psi\rangle_{\theta}&=\int\,\mathcal{D}\psi\mathcal{D}\bar{\psi}\mathcal{D}A\bar{\psi}\psi e^{i\int\,d^{4}x[\mathcal{L}_{QCD}+\mathcal{L}_{\theta}]} \n\\
+&\neq\int\,\mathcal{D}\psi'\mathcal{D}\bar{\psi'}
+\mathcal{D}A\mathcal{O'}(\psi',\bar{\psi'})e^{i\int\,d^{4}x\mathcal{L'}_{QCD}}
+=\langle\bar{\psi'}\psi'\rangle_{\theta}.
+\end{align}
+所以当我们在讨论具体问题时我们必须澄清我们在讨论的场是否经过变换. 这里我们简单的考虑手性变换仅影响顶夸克并考虑未变换时的场.
+\begin{align}
+u_{L}=e^{-\frac{i\theta}{2}}u'_{L}, \n\\
+u_{R}=e^{\frac{i\theta}{2}}u'_{R}. \n
+\end{align}
+显然在这样的变换下反常项消失, 质量项改写为
+\begin{align}
+\bar{u}m_{u}u=\bar{u}'e^{i\theta\gamma_{5}}=\bar{u}'[m_{u}\cos\theta+m_{u}i\gamma_{5}\sin\theta]u'. \n
+\end{align}
+这里我们很清楚的看到, 若 $\theta=0$, 则质量项不改变, 若 $\theta=\pi$, 则将出现负质量项. 且
+\begin{align}
+\langle\bar{u}u\rangle_{\theta}=\langle\bar{u}'u'\rangle_{\theta}\cos\theta+\langle\bar{u}'i\gamma_{5}u'\rangle_{\theta}\sin\theta.
+\end{align}
+对于几种常见的介子态, 表示如下:
+\begin{align}
+\langle\sigma\rangle&=\langle\bar{\psi}\lambda_{0}\psi\rangle, \n\\
+\langle{a}^{i}_{0}\rangle&=\langle\bar{\psi}{\lambda^{i}}\psi\rangle, \n\\
+\langle\eta\rangle&=\langle\bar{\psi}\lambda_{0}i\gamma_{5}\psi\rangle, \n\\
+\langle{\pi}^{i}\rangle&=\langle\bar{\psi}{\lambda}^{i}i\gamma_{5}\psi\rangle. \n
+\end{align}
+\subsubsection{非规范理论}
+之前我们提到, NJL 模型实际上是一个非规范理论, 那么 Fermi 测度便不会轻易发生改变, 但此时反常项与质量项对手性变换都不再是不变量. 但我们同样可以通过手性变换的方式将 $\theta$ 关联项整合至顶夸克质量项中. 故我们处理 NJL 模型的方式与一般处理量子色动力学的方式几乎相同, 只是这里并入质量项的处理不再是缘于变化的测度而是变化的有效作用量. 我们将质量项与反常项改写为
+\begin{align}
+\mathcal{L}'_{M}=\bar{u}'_{R}m_{u}e^{-i\theta}u'_{L}+\bar{d}'_{R}m_{d}d_{L}'+h.c., \n\\
+\mathcal{L}'_{det}=G_{2}\textrm{det}(\bar{\psi}'_{R}\psi'_{L})+h.c. . \n
+\end{align}
+不同于之前的讨论, 从这里开始我们所有的计算处理都将以变换后的场 $\psi'$ 作为标准, 但对于具体相结构的讨论我们仍可以使用未变换的场, 因为表述的选取仅影响计算结果. 想要探究强相互作用下 $\textbf{CP}$ 破坏对于夸克混合之间的影响, 我们理所当然的需要弄清楚有效相互作用项与 $\theta$ 的相关性. 前人的工作\upcite{65} 中曾对于 $\theta=0$ 的情形作了仔细的讨论, 这里我们沿用他们的表示与约定并在此基础上将反常项与 $\theta$ 的关联做适当的推广.
+\begin{align}
+G_{1}=(1-c)G_{0}, \n\\
+G_{2}=cG_{0}.
+\end{align}
+这样反常项引起的相互作用强度完全由参数 $c$ 来描述, 对于 $c=\frac{1}{2}$, 即 $G_{1}=G_{2}$ 时, 如前所述, 仅有 $\sigma$ 与 $\textbf{$\pi$}$ 场存在. 我们将沿用文献\upcite{66}的一些基本参数, $m_{u}=m_{d}=6$ MeV. $\pi$ 介子质量为 $140.2$ MeV 且衰变常数为 $92.6$ MeV, 从而 $\langle\bar{u}u\rangle=\langle\bar{d}d\rangle=(-241.5)$ MeV.
+\subsection{NJL 模型中基态的计算}
+首先引入 8 个实凝聚态如下
+\begin{align}
+\alpha_{0}'=-2(G_{1}+G_{2})\langle\sigma'\rangle, \n\\
+\bm{\alpha}'=-2(G_{1}-G_{2})\langle\bm{\alpha}_{0}'\rangle, \n\\
+\beta_{0}'=-2(G_{1}-G_{2})\langle\eta'\rangle, \n\\
+\bm{\beta}'=-2(G_{1}+G_{2})\langle\bm{\pi}'\rangle.
+\end{align}
+这里的所有物理量都是带撇的, 但为了简便我们在这部分将撇号省略。我们很自然的会认为粒子的凝聚态都是与时空无关的。对拉氏量作 Hubbard-Stratonovich 变换\upcite{67} 可消除四点夸克的相互作用从而拉氏量变为夸克场的二次函数且在路径积分上的积分可以很容易的导出。从而得到平均场近似下的热力学有效势为
+\begin{align}
+\mathcal{V}=\frac{\alpha_{0}^{2}+\beta_{i}^{2}}{4(G_{1}+G_{2})}
++\frac{\alpha_{i}^{2}+\beta_{0}^{2}}{4(G_{1}-G_{2})}-T\sum_{p_{0}=(2n+1)\pi T}\int\,\frac{d^{3}p}{(2\pi)^{3}}\ln\det{K},
+\end{align}
+$K$ 为味空间中的矩阵,
+\begin{align}
+K=I_{f}\otimes(i\gamma_{0}p_{0}+\gamma_{i}p_{i})-\mu\otimes\gamma_{0}-M,
+\end{align}
+其实就是逆夸克传播子且
+\begin{align}
+M=m_{u}(\cos\theta\lambda_{u}\otimes I+\sin\theta\lambda_{u}\otimes i\gamma_{5})+m_{d}\lambda_{d}\otimes I+\alpha_{a}\lambda_{a}\otimes I+\beta_{a}\lambda_{a}\otimes i\gamma_{5},
+\end{align}
+这里 $\lambda_{u}=(\lambda_{1}+\lambda_{3})/2$ 且$\lambda_{d}=(\lambda_{1}-\lambda_{3})/2$. 而凝聚态的值由有效势对这些态取极小值时决定。由 $U(1)$ 味对称性我们仅需研究 $\alpha_{0}$, $\alpha_{1}$, $\alpha_{3}$, $\beta_{0}$, $\beta_{1}$ 以及 $\beta_{3}$ 态。而根据文献\upcite{68}, 在量子色动力学中若化学势为零, 那么手性对称破缺无法由 $\langle\bar{\psi}i\gamma_{5}\rangle$ 型的凝聚态产生. 从而 $\beta_{0}$ 及 $\beta_{3}$ 均为零.
+\par
+为了计算有效势, 我们对 $K$ 乘上 $I_{f}\otimes\gamma_{0}$, 这个变换不改变矩阵行列式但在新的矩阵 $\tilde{K}$ 的对角线上产生了 $ip_{0}$ 项. 从而 $K$ 矩阵的行列式为 $\det{K}=\prod_{i=1}^{8}(\lambda_{i}-ip_{0})$, 当 $p_{0}=0$ 时 $\lambda_{i}$ 即为 $\tilde{K}$ 矩阵的本征值。按照前述求和,
+\begin{align}
+T\sum_{p_{0}=(2n+1)\pi T}\ln\det{K}=\sum_{i=1}^{8}\left[\frac{|\lambda_{i}|}{2}
++T\ln(1+e^{-\frac{|\lambda_{i}|}{T}})\right].
+\end{align}
+最后我们需要对 3-动量积分, 积分上限为紫外截断. 令 $\mathcal{V}$ 取极小值
+\begin{align}
+\frac{\p\mathcal{V}}{\p x_{i}}=0,
+\end{align}
+这里 $x=\{\alpha_{0},\alpha_{1},\alpha_{3},\beta_{1}\}$. 从而有效势为
+\begin{align}
+T\frac{\p}{\p x_{j}}\sum_{p_{0}=(2n+1)\pi T}\ln\det{K}=\frac{1}{2}\sum_{i=1}^{8}b_{ij}\left(1-\frac{2}{e^{|\lambda|/T}+1}\right)\textrm{sgn}(\lambda_{i}),
+\end{align}
+这里 $b_{ij}=(U^{\dagger}\p\tilde{K}(p_{0}=0)/\p x_{j}U)_{ii}$. $U$ 为一个幺正矩阵, 它的第 $i$ 列即为对应本征值 $\lambda_{i}$ 的归一化本征函数. 这个计算方法几乎没有用到近似, 精确度是极高的.
+\par
+值得注意的一点是, 为了让有效势在凝聚态唯一有限值时有极小值, 耦合系数 $G_{2}$ 必须满足 $-G_{1}\leq G_{2}\leq G_{1}$, 相应的可得 $-1/2\leq c\leq1/2$. 从拉氏量的反常项中我们知道若 $G_{2}\leq0$, 则 $\theta\rightarrow\theta+\pi$, 即极小值就在 $\theta=\pi$ 处, 而这违背了零温时的 Vafa-Witten 定理. 从而我们将 $c$ 限制在了 $0\leq c\leq1/2$ 这个范围内. $c=1/2$ 显然是一个非平凡的临界值, 在这时场中只会存在 $\sigma'$ 与 $\bm{\pi}'$, 即在 $\theta=0$ 时会产生 $\sigma$ 与 $\bm{\pi}$ 介子而 $\theta=\pi$ 时会产生 $\eta$ 与 $\bm{a}_{0}$ 介子.
+\par
+我们已经证明了有效势与凝聚态与 $\theta$ 具有关联性且可以由非零的 $c$ 值分为两种情况, $c<c_{\textrm{crit}}$ 时, $\theta=\pi$ 处无自发 \textbf{CP} 破坏产生, 而当 $c>c_{\textrm{crit}}$ 时则会存在自发的 \textbf{CP} 对称破缺. 而 $c_{\textrm{crit}}$ 则取决于夸克的质量. 对于最简单的简并夸克质量 $m_{u}=m_{d}=m$, 可以画出在 $\theta=\pi$ 时 $c-m$ 关系图, 如图 1 所示. 由图可知, 可以看到两种凝聚态,
+\par
+1. $\langle\sigma\rangle\neq0$, 这是普通的手性凝聚态.
+\par
+\begin{figure}
+\centering
+\includegraphics[width=10cm,height=8.4cm]{1.pdf}
+\caption{$\theta=\pi$ 时 $(c,m)$ 间的关系相图}
+\end{figure}
+2. $\langle\sigma\rangle\neq0$, $\langle\eta\rangle\neq0$, 这是 CP 破缺相.
+\par
+显然 $c_{\textrm{crit}}$ 对应相变处, 而由图知道 $c$ 与夸克质量之间为线性关系, $c_{\textrm{crit}}$ 对应的是一个二级相变.
+\subsubsection{$\theta$ 与真空的相关性}
+由之前的讨论我们知道, 如果让行列式相互作用项消失, 则 $\theta$ 不会影响我们的拉氏量以及相应结果. 这时只有 $\langle\sigma\rangle$ 凝聚态仍是非零值.
+\begin{figure}
+\centering
+\includegraphics[width=10cm,height=8.4cm]{2.pdf}
+\caption{归一化凝聚态的 $\theta$ 相关性, 取 $c=0.005<\ccc$.}
+\end{figure}
+在图 2 中可以看到 $c=0.005$ 时各凝聚态对 $\theta$ 的相关性. 这里我们选取 $m_{u}=m_{d}=6\ \textrm{MeV}$, 对应的 $\ccc\approx0.008$. 由于 $\langle\eta\rangle$ 在 $\theta=\pi$ 处为零, 这时不存在自发 CP 破坏. 而在其他的 $\theta$ 值 $\langle\eta\rangle$ 则正如我们所期待的存在非零值, 从而相应的有 CP 破坏现象产生\upcite{39}. 另外在这幅图中纵轴表示的是以 $\theta=0$ 时的 $\langle\sigma\rangle$ 为基础的归一化概率. 而对于简并的夸克质量 $\langle\bm{\pi}\rangle$ 及 $\langle\bm{a}_{0}\rangle$ 对所有 $\theta$ 均为 0, 这点即使对于 $c>\ccc$ 的情况仍然成立.
+\par
+图 3 中我们取 $c=0.2$. 这时自发 CP 破坏可以很清楚的从图中看出, 在 $\theta=\pi$ 时 $\langle\eta\rangle$ 是一个非零值. 且在这一点 $\langle\eta\rangle$ 会存在两个符号相反的简并真空, 它们之间正是相差一个 $CP$ 变换. 这便是著名的 Dashen 现象, 从有效势与 $\theta$ 的关联我们同样可以得出相似的结论. 我们在图 4 中绘制出了有效势关于 $\theta$ 的关系曲线, 其纵轴同样为以其在 $\theta=0$ 时的值为基础的归一化常数, 同时我们对 $c=0.005$ 与 $c=0.2$ 两种情况的有效势均作了讨论. 而在两种情况下, 有效势的极小值均在 $\theta=0$ 时取得, 这也是符合 Vafa-Witten 定理的. 更重要的是, 可以发现对于 $c=0.2>\ccc$, $\theta=\pi$ 处存在尖点. 由于手性反常, 有效势中的 $\theta$ 导数项与 $\langle\eta\rangle$ 是成正比的, 这也印证了为什么 $\langle\eta\rangle$ 在此处会存在左右两端相反符号的函数值.
+\begin{figure}
+\centering
+\includegraphics[width=10cm,height=8.4cm]{3.pdf}
+\caption{归一化凝聚态的 $\theta$ 相关性, 取 $c=0.2>\ccc$.}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=10cm,height=8.4cm]{4.pdf}
+\caption{$c=0.005<\ccc$ 与 $c=0.2>\ccc$ 时归一化有效势的 $\theta$ 相关性.}
+\end{figure}
+
+%===============================================================%
+
+\section{手性微扰理论}
+\subsection{手性微扰理论概述}
+手性微扰理论是由 Gell-Mann, Oakes 以及 Renner 率先发展的一种在量子色动力学中以保留手征对称性 ($\textrm{SU}(2)$ 或部分手征对称性 $\textrm{SU}(2)\times \textrm{SU}(2)$) 的拉氏量为基础构造的自洽的有效场论\upcite{56}. 与 QCD 的众多候选有效理论一样, 手性微扰论的目的也同样是为了构造一个能够在低能区反馈出有价值的信息的量子场论. 手性微扰理论中最基本的自由度仅有强子, 可以描述 $\pi$ 介子与 $\pi$ 介子以及 $\pi$ 介子与核子的相互作用(与 NJL 模型极其类似). 而考虑了 $SU(3)$ 对称性的手性微扰理论亦可以描述 $K$ 介子与 $\eta$ 介子的相互作用. 但由于默认保持手征对称, 手征微扰论禁止了大质量介子的出现, 它无法描述矢量玻色子之间的相互作用. 在 $\textrm{SU}(2)$ 下的手性微扰理论的拉氏量领头阶为
+\begin{align}
+\mathcal{L}=\frac{f_{\pi}^{2}}{4}tr{(\p_{\mu}U\p^{\mu}U^{\dagger})}+\frac{\lambda f_{\pi}^{3}}{4}tr{(m_{q}U+m_{q}^{\dagger}U^{\dagger})},
+\end{align}
+$f_{\pi}$ 仍为 $\pi$ 介子的衰变常数, $m_{q}$ 为夸克质量矩阵, 无混合时为对角阵. 如我们之前对有效场论的介绍, 一般从 4-动量进行展开, 展开尺度分别有两个: $p/\Lambda$ 及 $m_{\pi}/\Lambda$.
+\par
+手性微扰理论在低能区的 QCD 问题上有许多重要应用, 但由于 QCD 本身是非微扰的场论, 我们很难从手性微扰理论中一窥高能区的夸克行为, 它几乎是一个完全唯象的理论. 但手性微扰理论在低能区与实验的符合程度极高, 本文之前所提过的 Dashen 效应以及夸克禁闭都是可以从手性微扰理论中得到的结果. 利用这一工具, 人们也已经在 \textbf{CP} 破坏问题上做了许多工作\upcite{40}\upcite{44}. 其中文献 \upcite{40}来自 Creutz 的工作正是通过手性微扰理论的方法给出了此时发生自发 \textbf{CP} 破坏产生的 Dashen 效应以及夸克的相结构, 通过模拟得到了夸克质量矩阵的一定限制. 这一限制与实验符合的也很好, 故 Creutz 对夸克质量的工作也受到主流学界的赞同. 这里我们会将由 NJL 模型导出的结果与其做对比并说明二者得到的结果是相似的.
+\subsection{$\theta=\pi$ 时的相结构}
+在 NJL 模型的部分我们已经指出 $\theta=\pi$ 处会确实地产生自发 \textbf{CP} 破坏且其性质与预期的基本相符. 故我们有理由将目光集中于此. 在 Creutz 对于三味夸克的手性微扰论中夸克质量在 $(m_{u},m_{d})$- 平面中存在一个会产生自发 \textbf{CP} 破坏的区间, 这个区间的形状取决于奇夸克的质量, 如图 5 所示.
+\begin{figure}
+\centering
+\includegraphics[width=11cm,height=8.4cm]{yt.pdf}
+\caption{三味夸克手性微扰理论的 ($m_{u}$,$m_{d}$) 相图, 取 $\theta=\pi$.}
+\end{figure}
+但由于这里我们考虑的是简并二夸克态, 区间形状可以认为就是与产生反常项的 $c$ 相关. 取 $c=0.4$, 在图 6 中我们画出了 NJL 模型在 $\theta=\pi$ 时给出的 $(m_{u},m_{d})$-平面相图. 图中区域可分隔为四部分:
+\par
+1. $\langle\sigma\rangle<0$, $\langle a_{0}^{0}\rangle<0$.
+\par
+2. $\langle\sigma\rangle<0$, $\langle a_{0}^{0}\rangle>0$.
+\par
+3. $\langle\sigma\rangle<0$, $\langle a_{0}^{0}\rangle<0$, $\langle\eta\rangle\neq0$, $\langle\pi^{0}\rangle\neq0$.
+\par
+4. $\langle\sigma\rangle<0$, $\langle a_{0}^{0}\rangle>0$, $\langle\eta\rangle\neq0$, $\langle\pi^{0}\rangle\neq0$.
+\begin{figure}
+\centering
+\includegraphics[width=11cm,height=8.4cm]{5.pdf}
+\caption{$c=0.4$ 时 NJL 模型在 $\theta=\pi$ 处的 $(m_{u},m_{d})$ 相图, 几条曲线表示二级相变, 它们围出的区域为自发 \textbf{CP} 破缺相, 直线表示分界线.}
+\end{figure}
+\par
+从之前的分析我们已经知道, 从 \textbf{CP} 守恒相 1, 2 转变到 \textbf{CP} 破缺相 3, 4 的相变是一个二级相变. 相 1 与相 2 (或相 3 相 4) 之间仅相差 $\langle a_{0}^{0}\rangle$ 凝聚态的符号. 3, 4 之间的相变即为分界线所表示的相变, 当夸克质量较大时, 1, 2 间亦然. 分界线显然是简并夸克态时对应的结果, 那么根据之前的结论实际上在分界线上 $\langle a_{0}^{0}\rangle$ 为零, 而在 \textbf{CP} 破缺区域中 $\langle\pi^{0}\rangle$ 也是为零的, 但这时由于自发 \textbf{CP} 破坏的 Dashen 效应使得 $\langle\eta\rangle$ 虽然很小但并不为零. $a_{0}^{0}$ 凝聚态会在质量不相等时产生正是手性 $\textrm{SU}(2)_{V}$ 对称破坏时给出的非简并夸克质量的反映. 从图 5 与图 6 中我们可以看到, 三味夸克的手性微扰理论与二味夸克的 NJL 模型给出的夸克质量限制及相结构是完全类似的. 这从一个侧面证明了我们所得到的结果的正确性. 反过来说, 我们的工作也能作为 Creutz 工作以及 NJL 模型是自洽而合理的证据.
+\par
+\textbf{CP} 破缺区域的形状由渐近线确定, 这里即与 $c$ 相关. 尽管本文不能给出严格证明, 但由 Creutz 的工作在考虑奇夸克质量时渐近线与奇夸克质量成正比我们可以合理地猜想这里渐近线应与 $c$ 成正比. 而与最低阶二味手性微扰理论\upcite{44} 不同的是\footnote{这个模型中考虑的奇夸克质量趋于无穷, 相应的渐进区域移至了 $m_{u}=m_{d}=\infty$.}, 二味的 NJL 模型明确地指出即使对于两味非简并夸克, 仍存在自发 \textbf{CP} 破缺相. 根据文献\upcite{69}的分析, 这个区别可在 $N_{c}\rightarrow\infty$ (俗称大 $N$ 极限) 时得到解释, $N_{c}$ 为内禀对称群的自由度数 ($\textrm{SU}(N_{c})$ 的 $N_{c}$). 大 $N$ 极限在 QCD 相关的场论研究中十分重要, 具有许多极其富有价值的应用\upcite{70}\upcite{71}\upcite{72}, 这也暗示着我们 QCD 理论还有很多可以向高能区探索的可能性, 我们的工作可以为高能区完整地解决 \textbf{CP} 破坏问题提供一些有意义的启示.
+\subsection{有限温度情形}
+这一部分我们将主要讨论在非零温度下相结构的变化. 传统的量子场论考虑的均为零温量子场论, 原则上来说我们基于零温量子场论给出的结果不再适用. 但由于 NJL 模型是低能区的有效理论恰恰模糊了这样的限制, 在以强子为基本自由度的情况下本身就已经将温度对夸克凝聚态的影响包含在内了. 文献\upcite{73}曾指出在一定温度时 $\theta=\pi$ 处将不存在自发 \textbf{CP} 破坏, 即在高于某个确定的临界温度时 \textbf{CP} 破缺凝聚态将为零. 尽管我们相信他们是对的, 但他们仅考虑了 $c=0.5$ 的情形, 这里我们尝试对不同 $c$ 取值时凝聚态与温度的关系做推广. 如图 7 所示即为考虑简并夸克态时的 $(T,c)$ 相图. 存在如下三种相:
+\par
+1. $\langle\sigma\rangle\neq0$, 平凡的手性凝聚态.
+\par
+2. $\langle\sigma\rangle\neq0$, $\langle\eta\rangle\neq0$, \textbf{CP} 破缺相.
+\par
+3. $\langle\sigma\rangle\approx0$, 这时的相几乎完全保持手征对称性.
+\begin{figure}
+\centering
+\includegraphics[width=10cm,height=8.4cm]{6.pdf}
+\caption{NJL 模型在 $\theta=\pi$ 处的 $(T,c)$ 相图. 实线为一分界线, 由屈折点 $\p^{2}\langle\sigma\rangle/\p T^{2}=0$ 决定.}
+\end{figure}
+\par
+$T=0$ 时的相结构从图 6 中对应简并夸克质量本征态的直线两侧存在两个相可以很容易看出来. 图 7 中相 1 到相 2 的相变在所有温度下都是二级相变. 在图 6 中, 非简并夸克质量对应的相 1 与 3 ($m_{u}>m_{d}$) 或者相 2 与 4 ($m_{d}>m_{u}$) 即为图 7 中的相 1, 2. 即此时可能存在两种二级相变.
+\par
+由图 7 可知, 当温度高于一定值时, 会回到保持手征对称的状态 (即相 3). 但由于夸克质量的存在手征对称并不是严格保持的. 相 1 与相 3 间有一分界线, 这与 $\theta=0$ 时的情形相似\upcite{39}. 分界线方程由屈折点 $\p^{2}\langle\sigma\rangle/\p T^{2}=0$ 决定. 同时, 在温度较高时, 显然 \textbf{CP} 破缺相也会消失. 唯象地看, 由于温度导致强子之间的相互作用或是凝聚态, 体系中的自由度数被大大抑制从而基本的分立对称性如宏观物体一样基本保持; 理论地来说, 高温时的瞬子效应将会指数级衰减\upcite{74}, 而我们之前已经说明过 \textbf{CP} 破缺的效应实际上是来自于瞬子诱导的相互作用, 从而这样的结果与模型本身的构建也是自洽的. 数值上, 以 $c$ 为自变量的临界温度最大值约为 224 MeV. 这是能在实验上进行验证的能标, 但 \textbf{CP} 破坏效应本身非常弱, 可以做的预言仅仅是在这个温度附近我们不会发现强 \textbf{CP} 破坏的迹象. 但至少我们的结果能为实验提供一个观测的下界.
+\par
+最后一点我们希望指出的是, 在 NJL 模型部分我们已经验证了有效势的最小值对于非零温也会出现在 $\theta=0$ 处, 这意味着 Vafa-Witten 定理在非零温的 NJL 模型中仍然适用, 但正如我们在 Vafa-Witten 定理部分的陈述所言, 同样作为产生极值的两点, 对于 $\theta=\pi$ 处的物理 Vafa-Witten 定理并没有给予太多的限制, 故 Vafa-Witten 定理仍然适用恰恰证明了 $\theta=\pi$ 处是有可能产生自发\textbf{ CP} 破坏的. 但我们的工作中有一个问题亟待解决, 尽管解出了极小值, 但由于讨论区间的限制, 我们并没有验证全局范围内是否还存在一些局域的最小值, 如同 Higgs 机制一样\upcite{16}, 如果这种局域极小值是存在的话, 在那些地方可能会产生一些不同的性质, 本文希望在今后的工作中能够利用计算机对此进行验证并探究其与超标准模型的可能联系.
+\section{结论}
+最后我们对本文所做的工作稍作总结.
+\par
+本文从 \textbf{CP} 破坏的历史开始, 首先对弱相互作用与强相互作用中的 \textbf{CP} 破坏问题进行了阐述并将研究重心集中在了待解决的强相互作用中的 \textbf{CP} 破坏问题, 同时也列举出了现代物理学界用之研究 \textbf{CP} 破坏问题的几种主流方法且针对自发强 CP 破坏的思路展开了本文的工作. 接着我们对有效场论作了概述性的介绍, 说明了有效场论方法的构建目的以及相应的构建思路, 并从 Dashen 的工作\upcite{39}出发解释了有效场论的构建在研究\textbf{CP} 破坏问题尤其是强相互作用中的自发 \textbf{CP} 破坏问题中的重要作用. 为之后引入 Nambu-Jona-Lasinio 模型以及结果的检验打下了良好的基础. 第三部分我们用了一小段篇幅引入了在自发 \textbf{CP} 破坏问题中十分重要的 Vafa-Witten 定理, 由定理的内容我们会很自然地思考 $\theta=\pi$ 处的 \textbf{CP} 破坏现象并认为有希望将其与 Dashen 现象联系起来. 同时也帮助我们剔除掉了一些不必要的考虑比如 $\theta=0$ 时的情形. 在这之后则是利用基于有效场论修正的 NJL 模型对 $\theta=\pi$ 时的 \textbf{CP} 破坏进行了具体的计算. 我们将有效拉氏量中会引起 \textbf{CP} 破坏的手性反常项与夸克相互作用项分离, 仅由一个独立参数 $c$ 来决定. 这样的有效拉氏量将相应的给出一个与夸克凝聚态相关的有效势, 对有效势求极值即可得到各手性凝聚态与 $\theta$ 与 $c$ 的相关性. 我们通过这样的方法从 NJL 模型出发得到了 Dashen 所预言的现象, 既是 Dashen 效应的有力佐证也是对于 NJL 模型中强 \textbf{CP} 破坏问题的较为严谨的解释. 而在最后一部分, 通过与手性微扰理论得到的夸克质量限制以及相结构的结果进行对比, 得到了基本相似的图像, 这意味着基于有效场论的各类方法本身是高度自洽的, 同时与 Creutz 工作\upcite{40}结果的高度吻合也在一定程度上说明了我们所得到的结果的正确性. 我们还讨论了有限温度时的结果, 发现在大约 224 MeV 附近的能标处手性凝聚态将回到近似手征不变的状态, 同时不会再产生自发的 \textbf{CP} 破坏, 这与 Vafa-Witten 定理的结论一致且给出了一个可以在实验上被验证的强 \textbf{CP} 破坏产生的下界. 从而我们证明了自发 $\textbf{CP}$ 破坏的确可以在低能标下发生. 强 $\textbf{CP}$ 破坏是存在且极其微弱的. 当然, 我们的工作还存在一些亟待解决的问题. 一是夸克相结构中与大 $N$ 极限的联系[70], 尽管二味 NJL 模型与二味手征微扰论的结果可以在大 $N$ 极限时吻合, 但目前为止 QCD 仅仅是一个 $\textrm{SU}(3)$ 规范理论, $N=3\ll\infty$, 这点还等待未来 QCD 理论的发展从而可对此作出解释; 二是我们并未验证有效势是否在全局范围内存在一些局域的极小值, 这些极小值很有可能产生不一样的物理, 这也是我们下一步预备进行的工作. 无论怎样, 强 \textbf{CP} 破坏问题是 QCD 理论中本源的一个问题, 对于这个问题的探究将极大地丰富我们对非微扰场论的认识并且有望从此基础上出发构建一个在高能区也能够很好地应用的 QCD 理论. 尽管只是一点微不足道的工作, 这篇论文仍会将物理大厦的基石打磨得更为坚韧.
+
+\newpage
+{\pagestyle{empty}\mbox{}\newpage\pagestyle{empty}}
+
+\begin{thebibliography}{99}
+\addcontentsline{toc}{section}{\sanhao\heiti参考文献}
+\setlength{\itemsep}{-0.5mm}
+\bibitem{1} 林宗涵. 热力学与统计物理学. 北京大学出版社, 2004.
+\bibitem{2} Goldstein, Poole, Safko. Classical Mechanics. Addison Wesley Press, 1998.
+\bibitem{3} Ryder L H. Quantum Field Theory. Cambridge University Press, 1996.
+\bibitem{4} Gell-Mann M. Phys. Rev. , 1962, 125 (3): 1067–1084.
+\bibitem{5} Penzias A A, Wilson R W. The. Astro. Jour. , 1965, 142 (1): 419–421.
+\bibitem{6} Weinberg S. Phys. Rev. Lett. , 1967, 19 (21): 1264–1266.
+\bibitem{7} Lee T D, Yang C N. Phys. Rev. , 1956, 104: 254.
+\bibitem{8} Wu C S, Ambler E, Hayward R W, et al. Phys. Rev. , 1957, 105: 1413. Garwin R L, Lederman L M, Weinrich M. Phys. Rev. , 1957, 105: 1415.
+\bibitem{9} Rochester G D, Butler C C. Nature, 1947, 160: 855.
+\bibitem{10} Glashow S L. Nucl. Phys. , 1961, 22 (4): 579–588.
+\bibitem{11} Peskin Michael, Schroeder Daniel. An Introduction to Quantum Field Theory. Perseus Books Publishing. L. L. C, 1995.
+\bibitem{12} Kerson Huang. Introduction to Statistical Physics. CRC Press, 2010.
+\bibitem{13} 李政道. 场论与粒子物理学. 北京: 科学出版社, 1980.
+\bibitem{14} Kabir P K. Phys. Rev. D, 1970, 2: 540.
+\bibitem{15} Goldstone J, Salam A, Weinberg S. Phys. Rev. , 1962, 127: 965-970.
+\bibitem{16} Higgs P W. Phys. Rev. Lett. , 1964, 13 (16): 508–509.
+\bibitem{17} Cabibbo N. Phys. Rev. Lett. , 1963, 10: 531。
+\bibitem{18} Glashow S, Iliopoulos J, Maiani L. Phys. Rev. D, 1970, 2: 1285.
+\bibitem{19} Aubert J J, et al. Phys. Rev. Lett. , 1974, 33: 1404.
+\bibitem{20} Kobayashi M, Maskawa T. Prog. Theor. Phys. , 1973, 49: 652.
+\bibitem{21} Schwartz Matthew. Quantum Field Theory and the Standard Model. Cambridge University Press, 2014.
+\bibitem{22} Nakamura K, et al. (PDG). J. of Phys. G, 2010, 37: 075021.
+\bibitem{23} Wolfenstein L. Phys. Rev. Lett. , 1983, 51: 1945.
+\bibitem{24} Jarlskog C. Phys. Rev. Lett. , 1985, 55: 1039.
+\bibitem{25} Christenson J H, Croni J W, Fitvh V L, et al. Phys. Rev. Lett. , 1964, 13: 138.
+\bibitem{26} Lande K, et al. Phys. Rev. , 1956, 101: 1901.
+\bibitem{27} Besson D, et al. (CLEO Collaboration). Phys. Rev. Lett. , 1985, 54: 382.
+\bibitem{28} Hitlin D G. Asymmetric B Factory // Georgi, et al. CP Violation: From Quarks to Leptons. SIF and IOS Press, 2006.
+\bibitem{29} Aubert B, et al. (Belle Collaboration). Nucl. Instr. Meth. Phys. Res. A, 2002, 479: 1.
+\bibitem{30} Abashian A, et al. (Belle Collaboration). Nucl. Instr. Meth. Phys. Rev. A, 2002, 479: 117.
+\bibitem{31} Sakharov A D. JEPT Lett. , 1967, 5: 24.
+\bibitem{32} Lykken J D. CERN Yellow Report. , 2010, CERN. pp. 101–109. arXiv:1005.1676
+\bibitem{33} Haber, Howie. Reviews, Tables and Plots. , 2015, Particle Data Group (PDG).
+\bibitem{34} Covi L, Roulet E, Vissani F. Phys. Lett. B. , 1996, 73: 169-174.
+\bibitem{35} Peccei R D., Quinn H R. Phys. Rev. Lett. , 1977, 38 (25): 1440–1443.
+\bibitem{36} Barbieri R, Giudice G F. Nucl. Phys. B. , 1988, 306 (1): 63–76.
+\bibitem{37} Lee T D. Phys. Rept. , 1974, 9: 143-177.
+\bibitem{38} Wudka J. arxiv 0002180.
+\bibitem{39} Dashen R F. Phys. Rev. D. , 1971, 3: 1879.
+\bibitem{40} Creutz M. Phys. Rev. D. , 1995, 52: 2951.
+\bibitem{41} Vafa C, Witten E. Phys. Rev. Lett. , 1984, 53: 535.
+\bibitem{42} Nambu Y, Jona-Lasinio G. Phys. Rev. , 1961, 122: 345.
+\bibitem{43} Nambu Y, Jona-Lasinio G. Phys. Rev. , 1961, 124: 246.
+\bibitem{44} Cheng H Y. Phys. Rep. , 1988, 158: 1.
+\bibitem{45} A. Salam, J. Strathdee, Phys. Rev. D 2 (1970) 2869.
+\bibitem{46} P. Higgs, Phys. Rev. Lett. 12 (1964) 132.
+\bibitem{47} F. Englert and R. Brout, Phys. Rev. Lett. 13 (1964) 321.
+\bibitem{48} J. Goldstone, A. Salam, and S. Weinberg, Phys. Rev. 127 (1962) 965.
+\bibitem{49} J. Bikens, Int. J. Mod. Phys. A 8 (1993) 3045.
+\bibitem{50} 't Hooft, in Recent Developments in Gauge Theories, Carg\`{e}se 1979.
+\bibitem{51} Lovelace, Claud, Phys. Lett. B 34 (1971) 500.
+\bibitem{52} S. Weinberg, Phys. Rev. D 13 (1976) 974.
+\bibitem{53} Wilson, G. Kenneth, Phys. Rev. D 10 (1974) 2445.
+\bibitem{54} T. Kuo, Phys. Rev. D 2 (1970) 342.
+\bibitem{55} S. Okubo, V. Mathur, Phys. Rev. D 2 (1970) 394.
+\bibitem{56} M. Gell-Mann, R. Oakes, B. Renner, Phys. Rev. 175 (1969) 2195.
+\bibitem{57} S. Glashow, S. Weinberg, Phys. Rev. Lett. , 20 (1968) 224.
+\bibitem{58} Boer D, Boomsma J K. Phys. Rev. D. , 2008, 78: 054027.
+\bibitem{59} D. Weingarten, Phys. Rev. Lett. 51, 1830 (1983).
+\bibitem{60} C. Vafa, E. Witten, Nucl. Phys. B 234, 173 (1984).
+\bibitem{61} R. J. Crewther, P. diVecchia, G. Veneziano, E. Witten, Phys. Lett. B 88, 123 (1979).
+\bibitem{62} Bardeen J, Cooper L N, Schrieffer J R. Phys. Rev. , 1957, 106: 162.
+\bibitem{63} Boholiubov N N. J. Exptl. Theoret. Phys. (U.S.S.R), 1958, 34: 58-73.
+\bibitem{64} 't Hooft G. Phys. Rev. D. , 1976, 14: 3432.
+\bibitem{65} Frank M, Buballa M, Oertel M. Phys. Lett. B. , 2003, 562: 221.
+\bibitem{66} Boer D, Boomsma J K. Phys. Rev. D. , 2008, 78: 054027.
+\bibitem{67} J. Hubbard. Phys. Rev. Let. , 1959, 3: 77.
+\bibitem{68} H. J. Warringa,  D. Boer, J. O. Anderson, Phys. Rev. D 72 014015 (2005).
+\bibitem{69} G. Tytgat, Phys. Rev. D, 61 (2000), 114009.
+\bibitem{70} G. 't Hooft, Nucl. Phys. B, 72(3) (1974), 461.
+\bibitem{71} J. Maldacena, Adv. in Theo. and Math. Phys. 2 (1998), 231–252.
+\bibitem{72} E. Witten, Adv. in Theo. and Math. Phys. 2 (1998), 253-291.
+\bibitem{73} T. Fujihara, T. Inagaki, D. Kimura, Prog. Theor. Phys. 117 (2007), 139.
+\bibitem{74} D. Gross, R. Pisarski, L. Yaffe, Rev. Mod. Phys. 53 (1981), 43.
+\end{thebibliography}
+
+
+\end{document}
+

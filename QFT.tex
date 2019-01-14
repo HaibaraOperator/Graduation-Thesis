@@ -1,0 +1,86 @@
+\documentclass{article}
+\textheight 21cm % ????
+\textwidth 14cm % ????
+\usepackage{arcs}
+\usepackage{bm}
+\usepackage{ctex}
+\usepackage{empheq} % ????
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{feynmp}
+\usepackage{indentfirst} % ?????
+\usepackage{slashed} % Feynman??
+%\usepackage{txfonts} % ???oiint??
+\newcommand{\p}{\partial}
+\newcommand{\n}{\nonumber}
+\newcommand{\nb}{\numberwithin{equation}{section}}
+\title{\textbf{bujjn?}}
+\author{Hidenori Fukaya}
+\date{2019}
+\begin{document}
+\CJKspace
+\newpage
+\pagenumbering{Roman}
+\newpage
+\pagenumbering{arabic}
+\maketitle
+
+
+%======================????====================================
+\section{preface}
+本文主要从物理动机出发, 尝试从 bottom-up 的观点讨论构造性的量子场论. 本文已默认读者对量子场论已经比较了解, 由于篇幅所限也仅仅将最基本的骨架提炼了出来, 有兴趣的读者请自行阅读 Peskin, Weinberg 以及 Folland, 这三本教材也是笔者完成这份总结参考的主要教材.
+\section{单粒子量子场论的构造}
+量子场论起源于我们要获得一种满足狭义相对论要求的量子理论，如果一个单粒子系统满足狭义相对性原理, 那么等价的, 其 Hilbert 空间上存在 Poincar\'{e} 群的万有覆盖 $G$ 的不可约幺正表示.
+\par
+狭义相对性原理遵循的基本对称性为 Lorentz 对称性, Lorentz 对称性保度规不变, Lorentz 变换由 $\mathbb{R}^{4}$ 上的 10 个 Killing 矢量场诱导而得, 加上时间和空间反演可以复合出所有的 Lorentz 变换. 所有 Lorentz 变换构成一个 Lie 群, 称之为 Poincar\'{e} 群: $\mathbb{R}^{4}\otimes O(3,1)$. Lorentz 群有四个连通分支, 由 $\det{\Lambda}=\pm1$ 与 $sgn(\Lambda_{0}^{0})$ 来标记, 其中 $\det{\Lambda}=+1$ 与 $\Lambda_{0}^{0}>0$ 的情形记做 $SO^{+}(3,1)$, 本文一般讨论的都是这种情况. 值得注意的一点是, 如果考虑幺正表示的话, 由于 $\pi_{1}(SO(^{+}(3,1)))=\mathbb{Z}\oplus \mathbb{Z}$, $SO^{+}(3,1)$ 只存在投影幺正表示, 而对于非正常幺正表示, 可以直接考虑其万有覆盖:$spin(3,1)\simeq SL(2,\mathbb{C})$, 这是一个单连通 Lie 群, 故其存在正常幺正表示. 由于 $SO(3,1)^{+}$ 与 $SL(2,\mathbb{C})$ 的 Lie 代数同构, 它们在物理上给出的内容相同.
+\par
+对于量子态的变换, 我们需要考虑的是 $\mathbb{R}^{4}\otimes SL(2,\mathbb{C})$ 在复可分 Hilbert 空间上的幺正表示, 即对任意 $(\Lambda,a)\in\mathbb{R}^{4}\otimes SL(2,\mathbb{C})$, 存在幺正算子 $U(\Lambda,a):H\rightarrow H$ 保 Hilbert 空间中内积同构, 这意味着变换前后量子态的等价. 所以要构造满足狭义相对性原理的量子理论, 无非就是把 $\mathbb{R}^{4}\otimes SL(2,\mathbb{C})$ 的幺正表示应用到各种具体问题中去罢了.
+\par
+借助 Poincar\'{e} 群万有覆盖 $G$ 的迷向子群 (little group) 在自旋空间上的表示即可得到 $G$ 在 Hilbert 空间上的不可约幺正表示, 称为诱导表示. 不同的迷向子群给出不同的诱导表示, 对应不同的单粒子态. 借此我们可以利用狭义相对性原理对量子态进行分类. 具体来说:
+\par
+(1) 迷向子群 $SU(2)$ 的 $2s+1$ 维表示 $\sigma_{s}$: 自旋为 $s$ 的有质量粒子.
+\par
+(2) 迷向子群 $SL(2,\mathbb{R})$ 的一维表示 $\sigma_{n}=e^{in\theta}$: 螺旋度为 $\frac{1}{2}|n|$ 的无质量粒子.
+\par
+(3) 迷向子群 $SL(2,\mathbb{C})$: 对应真空态 $|0\rangle$.
+\par
+对于其他情况下迷向子群的表示, 它们在物理上并不对应任何有物理意义的单粒子态.
+\section{多粒子量子场论的构造}
+类似于非相对性量子力学, 从满足狭义相对性原理的多粒子态散射问题出发考虑多粒子量子场论的构造. 首先给出这种情况下系统需要满足的条件.
+\par
+1. 基本物理图像: 一开始制备一堆无相互作用的粒子, 经过一段时间它们在某个有限的区域内发生相互作用, 在作用完成后又经过一段时间, 最后又得到另一堆无相互作用的粒子.
+\par
+2. (1) 不发生相互作用, 粒子一直保持自由粒子态. 能量本征态为 $H_{0}\Phi_{a}=E_{a}\Phi_{a}$. (2) 存在相互作用, 哈密顿量为 $H$, 能量本征态为 $H\Phi_{a}=E_{a}\Phi_{a}$.
+\par
+3. 两种情况的联系: $t\rightarrow\infty$ 时, (2) 中粒子叠加态趋近于 (1) 中自由粒子的叠加态 (可由幺正算子谱定理直接求得).
+\par
+4. 波算子: 入态: $\Psi_{\alpha}^{+}=\Omega(-\infty)\Phi_{\alpha}$, 出态: $\Psi_{\beta}^{-}=\Omega(+\infty)\Phi_{\beta}$.
+\par
+5. $S$ 矩阵: $S_{\beta\alpha}=(\Psi_{\beta}^{-},\Psi_{\alpha}^{+})=(\Omega(\infty)\Phi_{\beta},\Omega(-\infty)\Phi_{\alpha})=(\Phi_{\beta},S\Phi_{\alpha})$.
+\par
+求解 $S$ 矩阵即为散射理论的核心. 为了求得 $S$ 矩阵, 我们再引入 Fock 空间与产生湮灭算符来描述多粒子态. 假设单粒子 Hilbert 空间为 $H$, 直接的猜测会认为 $n$ 个全同粒子的 Hilbert 空间是 $\otimes^{n}H$. 但考虑到玻色子与费米子的对称性与范对称性, 直接取对称张量空间和反对称张量空间即可, 具体来说: $n$ 个全同费米子的 Hilbert 空间为: $\bigwedge^{n}H$, 多粒子态为 $H$ 上的 $n$ 形式; $n$ 个全同玻色子的 Hilbert 空间为: $S^{n}H$, 多粒子态为 $H$ 上的 $n$ 阶对称张量.
+\par
+从而 (1) 玻色子 Fock 空间:$F_{s}(H)=\oplus_{n=0}^{\infty}S^{n}H$, 很显然这就是关于 $H$ 的张量代数模掉理想之后生成的对称代数. (2) 费米子 Fock 空间: $F_{a}(H)=\oplus_{n=0}^{\infty}\bigwedge^{n}H$, 这是 $H$ 上的外代数.
+\section{场的正则量子化}
+给定 Fock 空间后便可以自然地定义其中的产生湮灭算符.
+\par
+玻色子: 产生算符: $a^{\dagger}(v)=P_{s}B(v)^{\dagger}\sqrt{N+1}=P_{s}\sqrt{N}B(v)^{\dagger}$. 湮灭算符: $a(v)=B(v)\sqrt{N}=\sqrt{N+1}B(v)$, $a(v)$ 这里是保 $F_{s}^{0}(H)$ 不变的. 选定基底即给出我们通常的表示以及相应的对易关系.
+\par
+费米子: 产生算符: $a(v)^{\dagger}(u_{1}\wedge\cdots\wedge u_{k})=\sqrt{k+1}v\wedge u_{1}\wedge\cdots\wedge u_{k}$. 湮灭算符: $a(v)(u_{1}\wedge\cdots\wedge u_{k})=\frac{1}{\sqrt{k}}\sum_{j=1}^{k}(-1)^{j}(v,u_{j})u_{1}\wedge\cdots\wedge u_{k}$. 同样的, 选定基底即得通常的表示及反对易关系.
+\par
+再将 Klein--Gordon 方程考虑进来, 按照历史发展的思考进程很容易地便可以得出正则量子化的产生湮灭算符从而完善整个量子场论理论的构造.
+\section{量子场论的公理化}
+这里我们给出量子场论的三种等价的基本假设得到的公理化量子场论, 注意二次量子化并不是自洽的公理化假设. 我们一般遵循的是 Wightman 公理化, 其余的量子公理均可以严格证明它与 Wightman 公理是等价的.
+\subsection{Wightman 公理}
+\subsection{局域性公理}
+\subsection{路径积分公理}(这里懒得写了, 你就列举一下得了, 或者直接略去这一节)
+\section{小结}
+1. 单粒子态: 对于单粒子态 Hilbert 空间 $H$, 为了满足狭义相对性原理, $H$ 上必须存在 $SL(2,\mathbb{C})\otimes\mathbb{R}^{4}$ 的不可约幺正表示 $U$. 这个不可约幺正表示 $U$ 可以通过单粒子自旋空间 $C^{N}$ 上迷向子群的表示 $S$ 诱导而来.
+\par
+2. Fock 空间: 多粒子态的 Hilbert 空间是 Fock 空间 $\mathcal{F}$, 其上存在 $SL(2,\mathbb{C})\otimes\mathbb{R}^{4}$ 的可约幺正表示 $\mathcal{F}(U)$, 其稠密子空间为 $\mathcal{F}_{0}$, 即有限粒子数的 Fock 空间.
+\par
+3. 产生湮灭算符: 产生湮灭算符 $a^{\dagger}(f)$, $a(f)$ 可以看做是 $(R^{4},\eta_{ab})$ 上的 operator--value distribution, 它们的集合构成 Heisenberg 代数 $A_{H}$. $A_{H}$ 中元素作用在真空 $|\Omega\rangle$ 上能够张开成整个 $\mathcal{F}_{0}$, 即在 Fock 空间中稠密.
+\par
+4. 力学量: 通过产生湮灭算符可以定义粒子数算符 $N$, 进而多粒子系统的力学量 $O$ 可以间接通过产生湮灭算符构造, 例如零自旋自由粒子的哈密顿量 $H_{0}=\sum_{j=1}^{\infty}\omega_{j}a(f_{j})^{\dagger}a(f_{j})$ (物理上通过产生湮灭算符来构造力学量的一个重要动机是这样可以使散射算符 $S$ 自动满足集团分解原理).
+\end{document}
